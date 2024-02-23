@@ -336,3 +336,77 @@
     border-radius: 5em;
     box-shadow: -1px 2px 6px 1px #490e0e;
   }
+/* 
+
+.wrapper { 
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 30%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+
+.btn-outline {
+   margin: 30px auto 0;
+  width: 210px;
+  height: 40px;
+  display: block;
+}
+
+.btn-outline .shape {
+  stroke-dasharray: 100 310;
+  stroke-dashoffset: -304;
+  stroke-width: 5px;
+  fill: transparent;
+  stroke: #733434;
+  -webkit-transition: stroke-width 1s, stroke-dashoffset 1s, stroke-dasharray 1s;
+  -ms-transition: stroke-width 1s, stroke-dashoffset 1s, stroke-dasharray 1s;
+  transition: stroke-width 1s, stroke-dashoffset 1s, stroke-dasharray 1s;
+}
+
+.btn-outline .text { 
+  top: -34px;
+  position: relative;
+  color: #e76a6a;
+  font-size: 1.5em;
+  letter-spacing: 4px;
+  margin-right: -4px;
+}
+
+ .btn-outline:hover .shape {
+   stroke-width: 2px;
+  stroke-dashoffset: 0;
+  stroke-dasharray: 550;
+}
+
+.no-svg #btn-outline {
+   color: #284637;
+  font-size: 1.7em;
+  line-height: 40px;
+  letter-spacing: 4px;
+  text-indent: 4px;
+  border: 2px solid #3d47b4;
+} */
+
+.muscle{
+    opacity: 1;
+}
+.muscle:hover{
+    background-color: #cb5353;
+    transition: 0.5s ;
+    transition: opacity 0.5s ;
+    opacity: 0.5; 
+    cursor: pointer;
+    color: blue; 
+} 
+a:hover{
+    fill: #cb5353;
+    transition: 0.5s ;
+    transition: opacity 0.5s ;
+    opacity: 0.5; 
+    cursor: pointer;
+    color: blue; 
+}
