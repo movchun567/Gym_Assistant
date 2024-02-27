@@ -20,14 +20,15 @@ a:visited {
   color: rgba(51,51,51,1);
 } 
 a:hover { 
-  text-decoration: none; 
+  text-decoration: underline; 
+  transition: 0.5s;
 } 
 
 .nav__link{
   position: relative;
 }
 
-.nav__link::after{
+/* .nav__link::after{
   content: '';
   width: 100%;
   height: 2px;
@@ -36,13 +37,15 @@ a:hover {
   opacity: 0;
   transition: all 0.5s;
   pointer-events: none;
-}
+}  */
 
-.nav__link:hover::after{
+/* .nav__link:hover::after{
+  border-bottom: #490e0e 3px solid;
+  text-decoration: underline;
   opacity: 1;
   transition: opacity 0.5s;
-}
-/* a:active { 
+} 
+a:active { 
   text-decoration: none; 
 } */
 a::after {
