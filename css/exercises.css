@@ -30,7 +30,7 @@
     width: 250px;
     height: 70px;
     text-align: center;
-    color: rgba(51,51,51,1);
+    /* color: rgba(51,51,51,1); */
     font-family: Montserrat;
     font-weight: Medium;
     font-size: 24px;
@@ -435,18 +435,24 @@
   margin:20px 0
 }
 
-.savelg{
-  width: 100%;
-  flex: 1;
-  padding-left: 20px;
-  align-items: center;
-
-}
-
-.save-logo {
-  /* background-image: '../images/save.png'; */
+.save_logo{
+  width: 50px;
+  height: 50px;
   position: absolute;
+  padding-right: 10px;
 }
+.hover_img{
+  width: 50px;
+  height: 50px;
+  display: none;
+  position: absolute;
+  padding-right: 10px;
+}
+
+.save_exrs:hover .hover_img{
+  display: inline;
+}
+
 .site-footer h6
 {
   color:#fff;
