@@ -1,0 +1,36 @@
+{% extends "exercises.html" %}
+
+{% block content %}
+    <div class='cantainer-3'>
+    <span class="v633_61"><h2>{{ muscle }}</h2></span>
+    <div class="saved_trainings">
+    {% for training in saved_trainings %}
+        {% if training.muscle == muscle %}
+        <div class="grid">
+            <div class="grid__item_video">
+                <div class="video">
+                    <iframe width="560" height="315" src="{{ training.video_url }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="description">
+                    <h2>{{ training.name }}</h2>
+                    <p>{{ training.description }}</p>
+                </div>
+                <form action="{{ url_for('save') }}" method="POST">
+                    <input type="hidden" name="video_url" value="{{ training.video_url }}">
+                    <input type='hidden' name="name" value='{{ training.name }}'>
+                    <input type='hidden' name="description" value='{{ training.description }}'>
+                    {% if training.bookmarked %}
+                        <button type="submit" class="btn btn-clicked"></button>
+                    {% else %}
+                        <button type="submit" class="btn"></button>
+                    {% endif %}
+                </form>
+
+            </div>
+        </div>
+        <a id = 'my_training'></a>
+        {% endif %}
+        {% endfor %}
+    </div>
+    </div>
+{% endblock content %}
