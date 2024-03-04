@@ -24,12 +24,12 @@ personal_videos = db.personal
 @app.route('/biceps')
 def biceps():
     saved_trainings = all_videos.find()
-    return render_template('trainings.html', saved_trainings=saved_trainings, muscle = 'Біцепс')
+    return render_template('extention.html', saved_trainings=saved_trainings, muscle = 'Біцепс')
 
 @app.route('/triceps')
 def triceps():
     saved_trainings = all_videos.find()
-    return render_template('trainings.html', saved_trainings=saved_trainings, muscle = 'Тріцепс')
+    return render_template('extention.html', saved_trainings=saved_trainings, muscle = 'Тріцепс')
 
 @app.route('/')
 def home():
