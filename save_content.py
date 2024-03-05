@@ -4,17 +4,21 @@ from urllib.parse import urlparse
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 
-uri = "mongodb://localhost:27017"
-# uri = "mongodb+srv://mariaonyshcuk:<DqylDYhyRJ39iETt>@gymassistant.zuau6ap.mongodb.net/?retryWrites=true&w=majority&appName=GymAssistant"
+# uri = "mongodb://localhost:27017"
+# uri = "mongodb+srv://mariaonyshcuk:rE6DfRl4DCkePiYl@gymassistant.zuau6ap.mongodb.net/?retryWrites=true&w=majority&appName=GymAssistant"
+uri = "mongodb+srv://Maria:rE6DfRl4DCkePiYl@gymassistant.zuau6ap.mongodb.net/?retryWrites=true&w=majority&appName=GymAssistant"
+
 
 client = MongoClient(uri, server_api=ServerApi('1'))
 
 app = Flask(__name__)
 
 app.secret_key = 'your_secret_key'
-db = client['gymassistant']
-all_videos = db.saved
+db = client.gymassistant
+all_videos = db.all_exercises
 personal_videos = db.personal
+
+user_info = db.users
 
 # @app.route('/')
 # def home():
@@ -33,13 +37,15 @@ def triceps():
 
 @app.route('/')
 def home():
+    user_data = user_info.find({})
     saved_trainings = personal_videos.find()
-    return render_template('my_profile.html', saved_trainings=saved_trainings)
+    return render_template('my_profile.html', saved_trainings=saved_trainings, user_data=user_data)
 
 @app.route('/my_profile')
 def my_profile():
+    user_data = user_info.find({})
     saved_trainings = personal_videos.find()
-    return render_template('my_profile.html', saved_trainings=saved_trainings)
+    return render_template('my_profile.html', saved_trainings=saved_trainings, user_data=user_data)
 
 @app.route('/save', methods=['POST'])
 def save():
@@ -61,18 +67,18 @@ def save():
 
     return redirect(referrer_path)
 
-@app.route('/delete', methods=['POST'])
-def delete():
-    name = request.form.get('name')
+# @app.route('/delete', methods=['POST'])
+# def delete():
+#     name = request.form.get('name')
 
-    referrer_url = request.referrer
-    referrer_path = urlparse(referrer_url).path
-    already_saved = personal_videos.find_one({'name': name})
-    not_yet = all_videos.find_one({'name': name})
-    all_videos.update_one({'_id': not_yet['_id']}, {'$set': {'bookmarked': False}})
-    personal_videos.delete_one({'_id': already_saved['_id']})
+#     referrer_url = request.referrer
+#     referrer_path = urlparse(referrer_url).path
+#     already_saved = personal_videos.find_one({'name': name})
+#     not_yet = all_videos.find_one({'name': name})
+#     all_videos.update_one({'_id': not_yet['_id']}, {'$set': {'bookmarked': False}})
+#     personal_videos.delete_one({'_id': already_saved['_id']})
 
-    return redirect(referrer_path)
+#     return redirect(referrer_path)
 
 if __name__ == "__main__":
     app.run(debug=True)
