@@ -17,12 +17,17 @@ a:visited {
   color: rgba(51,51,51,1);
 } 
 a:hover { 
-  border-bottom-width:4px ; 
-  border-bottom-style: outset;
+
+  /* border-bottom-width:4px ; 
+  border-bottom-style: outset; */
 
   padding-bottom:3px;
   transition: 0.5s;
-} 
+  background-image: linear-gradient(90deg, #e93b3b, #f2a640);
+  background-position: bottom;
+  background-size: 100% 10%;
+  background-repeat: no-repeat;
+}
 a:active { 
   text-decoration: none; 
 }
