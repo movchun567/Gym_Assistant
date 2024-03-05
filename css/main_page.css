@@ -20,9 +20,6 @@ a:visited {
 } 
 a:hover { 
 
-  /* border-bottom-width:4px ; 
-  border-bottom-style: outset; */
-
   padding-bottom:3px;
   transition: 0.5s;
   background-image: linear-gradient(90deg, #e93b3b, #f2a640);
@@ -30,37 +27,7 @@ a:hover {
   background-size: 100% 10%;
   background-repeat: no-repeat;
 } 
-/* 
-.nav__link{
-  position: relative;
-} */
 
-/* .nav__link::after{
-  content: '';
-  width: 100%;
-  height: 2px;
-  background-color: rgb(152, 48, 48);
-  display: block;
-  opacity: 0;
-  transition: all 0.5s;
-  pointer-events: none;
-}  */
-
-/* .nav__link:hover::after{
-  border-bottom: #490e0e 3px solid;
-  text-decoration: underline;
-  opacity: 1;
-  transition: opacity 0.5s;
-} 
-a:active { 
-  text-decoration: none; 
-} */
-/* a::after {
-  content: '';
-  width: 0;
-  height: 2px;
-  background-color: #26af26;
-} */
 .sections{
   width: 250px;
   height: 70px;
@@ -378,60 +345,6 @@ a:active {
   border-radius: 5em;
   box-shadow: -1px 2px 6px 1px #490e0e;
 }
-/* 
-
-.wrapper { 
-width: 100%;
-overflow: hidden;
-position: absolute;
-top: 30%;
--webkit-transform: translateY(-50%);
--ms-transform: translateY(-50%);
-transform: translateY(-50%);
-}
-
-
-.btn-outline {
- margin: 30px auto 0;
-width: 210px;
-height: 40px;
-display: block;
-}
-
-.btn-outline .shape {
-stroke-dasharray: 100 310;
-stroke-dashoffset: -304;
-stroke-width: 5px;
-fill: transparent;
-stroke: #733434;
--webkit-transition: stroke-width 1s, stroke-dashoffset 1s, stroke-dasharray 1s;
--ms-transition: stroke-width 1s, stroke-dashoffset 1s, stroke-dasharray 1s;
-transition: stroke-width 1s, stroke-dashoffset 1s, stroke-dasharray 1s;
-}
-
-.btn-outline .text { 
-top: -34px;
-position: relative;
-color: #e76a6a;
-font-size: 1.5em;
-letter-spacing: 4px;
-margin-right: -4px;
-}
-
-.btn-outline:hover .shape {
- stroke-width: 2px;
-stroke-dashoffset: 0;
-stroke-dasharray: 550;
-}
-
-.no-svg #btn-outline {
- color: #284637;
-font-size: 1.7em;
-line-height: 40px;
-letter-spacing: 4px;
-text-indent: 4px;
-border: 2px solid #3d47b4;
-} */
 
 .muscle{
   opacity: 1;
@@ -442,16 +355,7 @@ border: 2px solid #3d47b4;
   transition: opacity 0.5s ;
   opacity: 0.5; 
   cursor: pointer;
-  color: blue; 
 } 
-/* a:hover{
-  transition: 0.5s ;
-  transition: opacity 0.5s ;
-  opacity: 0.5; 
-  cursor: pointer;
-  
-} */
-
 .underline-06 {
   background-image: linear-gradient(90deg, #e67399, #f2a640);
   background-position: bottom;
