@@ -1,5 +1,7 @@
 from flask import Flask, jsonify, request
 import uuid
+from passlib.hash import pbkdf2_sha256
+from app import db
 
 class User:
     def signup(self):
@@ -9,10 +11,13 @@ class User:
             "_id" : uuid.uuid4().hex,
             "name" : request.form.get('name'),
             "email" : request.form.get('email'),
-            "password" : request.form.get('password'),
-            "age" : request.form.get('age'),
+            "password" : request.form.get('password_1'),
+            "bdate" : request.form.get('bdate'),
             "gender" : request.form.get('gender'),
             "weight" : request.form.get('weight'),
             "height" : request.form.get('height')
         }
+        user['password'] = pbkdf2_sha256.encrypt(user['password'])
+        db['users'].insert_one(user)
+
         return jsonify(user), 200
