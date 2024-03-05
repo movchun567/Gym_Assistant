@@ -2,19 +2,23 @@ from flask import Flask, request, render_template, redirect, url_for
 from urllib.parse import urlparse
 # from pymongo import MongoClient
 from pymongo.mongo_client import MongoClient
-from pymongo.server_api import ServerApi
+# from pymongo.server_api import ServerApi
+import certifi
+ca = certifi.where()
 
 # uri = "mongodb://localhost:27017"
-# uri = "mongodb+srv://mariaonyshcuk:rE6DfRl4DCkePiYl@gymassistant.zuau6ap.mongodb.net/?retryWrites=true&w=majority&appName=GymAssistant"
 uri = "mongodb+srv://Maria:rE6DfRl4DCkePiYl@gymassistant.zuau6ap.mongodb.net/?retryWrites=true&w=majority&appName=GymAssistant"
 
-
-client = MongoClient(uri, server_api=ServerApi('1'))
+client = MongoClient(uri, tlsCAFile=certifi.where())
 
 app = Flask(__name__)
 
-app.secret_key = 'your_secret_key'
-db = client.gymassistant
+db = client['gymassistant']
+# app.secret_key = 'your_secret_key'
+# all_videos = db.saved
+# personal_videos = db.personal
+# db = client.gymassistant
+
 all_videos = db.all_exercises
 personal_videos = db.personal
 
@@ -25,10 +29,15 @@ user_info = db.users
 #     saved_trainings = all_videos.find()
 #     return render_template('my_p.html', saved_trainings=saved_trainings)
 
-@app.route('/biceps')
-def biceps():
+@app.route('/shoulders_delta')
+def shoulders_delta():
     saved_trainings = all_videos.find()
-    return render_template('extention.html', saved_trainings=saved_trainings, muscle = 'Біцепс')
+    return render_template('extention.html', saved_trainings=saved_trainings, muscle = 'Плечі і дельтовидні мязи')
+
+@app.route('/chest')
+def chest():
+    saved_trainings = all_videos.find()
+    return render_template('extention.html', saved_trainings=saved_trainings, muscle = "Грудні м'язи")
 
 @app.route('/triceps')
 def triceps():
@@ -37,15 +46,16 @@ def triceps():
 
 @app.route('/')
 def home():
-    user_data = user_info.find({})
     saved_trainings = personal_videos.find()
-    return render_template('my_profile.html', saved_trainings=saved_trainings, user_data=user_data)
+    user = user_info.find()
+    return render_template('my_profile.html', saved_trainings=saved_trainings, user = user)
 
 @app.route('/my_profile')
 def my_profile():
-    user_data = user_info.find({})
+    user = db.users.find({'name': 'Bob Wood'})
+
     saved_trainings = personal_videos.find()
-    return render_template('my_profile.html', saved_trainings=saved_trainings, user_data=user_data)
+    return render_template('my_profile.html', saved_trainings=saved_trainings,  user = user)
 
 @app.route('/save', methods=['POST'])
 def save():
@@ -67,18 +77,18 @@ def save():
 
     return redirect(referrer_path)
 
-# @app.route('/delete', methods=['POST'])
-# def delete():
-#     name = request.form.get('name')
+@app.route('/delete', methods=['POST'])
+def delete():
+    name = request.form.get('name')
 
-#     referrer_url = request.referrer
-#     referrer_path = urlparse(referrer_url).path
-#     already_saved = personal_videos.find_one({'name': name})
-#     not_yet = all_videos.find_one({'name': name})
-#     all_videos.update_one({'_id': not_yet['_id']}, {'$set': {'bookmarked': False}})
-#     personal_videos.delete_one({'_id': already_saved['_id']})
+    referrer_url = request.referrer
+    referrer_path = urlparse(referrer_url).path
+    already_saved = personal_videos.find_one({'name': name})
+    not_yet = all_videos.find_one({'name': name})
+    all_videos.update_one({'_id': not_yet['_id']}, {'$set': {'bookmarked': False}})
+    personal_videos.delete_one({'_id': already_saved['_id']})
 
-#     return redirect(referrer_path)
+    return redirect(referrer_path)
 
 if __name__ == "__main__":
     app.run(debug=True)
