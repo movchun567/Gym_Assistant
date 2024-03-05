@@ -18,6 +18,10 @@ class User:
             "height" : request.form.get('height')
         }
         user['password'] = pbkdf2_sha256.encrypt(user['password'])
-        db['users'].insert_one(user)
+        if db['users'].find_one({"email" : user['email']}):
+            return jsonify({"error" : "Email address already in use"}), 400
 
-        return render_template('my_profile.html')
+        if db['users'].insert_one(user):
+            return render_template('my_profile.html')
+
+        return jsonify({"error" : "Signup failed"}), 400
