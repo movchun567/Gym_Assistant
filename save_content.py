@@ -75,7 +75,6 @@ def save():
         all_videos.update_one({'_id': not_yet['_id']}, {'$set': {'bookmarked': True}})
         personal_videos.insert_one(new_content)
 
-    return redirect(referrer_path)
 
 @app.route('/delete', methods=['POST'])
 def delete():
