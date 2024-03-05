@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 import uuid
 from passlib.hash import pbkdf2_sha256
 from app import db
@@ -20,4 +20,4 @@ class User:
         user['password'] = pbkdf2_sha256.encrypt(user['password'])
         db['users'].insert_one(user)
 
-        return jsonify(user), 200
+        return render_template('my_profile.html')
