@@ -6,6 +6,8 @@ client = MongoClient("mongodb+srv://Danyil:m1MaJ0ADwtgm0mso@gymassistant.zuau6ap
 db = client['gymassistant']
 users = db['users']
 
+from user import routes
+
 @app.route('/')
 def main_page():
     return render_template('main_page.html')
