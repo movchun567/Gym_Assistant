@@ -20,5 +20,9 @@ def my_profile():
 def exercises():
     return render_template('exercises.html')
 
+@app.route('/registration_form/')
+def registration_form():
+    return render_template('registration_form.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
