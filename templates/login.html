@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
-        <link href="css/registration_form.css" rel="stylesheet" />
+        <link href="/static/css/registration_form.css" rel="stylesheet" />
     </head>
     <body>
         <div class="icon_container">
@@ -25,7 +25,7 @@
                     </form>
                 </div>
                 <h3 style="font-family: Montserrat;">Не маєш профілю?</h3>
-                <a href="registration_form.html" style="font-family: Montserrat; font-size: medium;">Зареєструватися</a>
+                <a href="{{ url_for('registration_page') }}" style="font-family: Montserrat; font-size: medium;">Зареєструватися</a>
               </div>
             </div>
     </body> 
