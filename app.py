@@ -59,5 +59,55 @@ def biceps():
     trainings = all_exercises.find()
     return render_template('exercises_extention.html', trainings=trainings, muscle = "М'язи біцепса")
 
+@app.route('/chest')
+def chest():
+    trainings = all_exercises.find()
+    return render_template('exercises_extention.html', trainings=trainings, muscle = "Грудні м'язи")
+
+@app.route('/shoulders')
+def shoulders():
+    trainings = all_exercises.find()
+    return render_template('exercises_extention.html', trainings=trainings, muscle = "Плечі і дельтовидні мязи")
+
+@app.route('/back_upper')
+def back_upper():
+    trainings = all_exercises.find()
+    return render_template('exercises_extention.html', trainings=trainings, muscle = "Верхня частина спини і широкий м'яз спини")
+
+@app.route('/back_middle')
+def back_middle():
+    trainings = all_exercises.find()
+    return render_template('exercises_extention.html', trainings=trainings, muscle = "Середина спини і поясничний відділ")
+
+@app.route('/abs')
+def abs():
+    trainings = all_exercises.find()
+    return render_template('exercises_extention.html', trainings=trainings, muscle = "М'язи пресу")
+
+@app.route('/lower_back')
+def lower_back():
+    trainings = all_exercises.find()
+    return render_template('exercises_extention.html', trainings=trainings, muscle = "Тазобедренний суглоб")
+
+@app.route('/quads')
+def quads():
+    trainings = all_exercises.find()
+    return render_template('exercises_extention.html', trainings=trainings, muscle = "М'язи тазу і квадріцепсу")
+
+@app.route('/calves')
+def calves():
+    trainings = all_exercises.find()
+    return render_template('exercises_extention.html', trainings=trainings, muscle = "М'язи ікри")
+
+@app.route('/forearm')
+def forearm():
+    trainings = all_exercises.find()
+    return render_template('exercises_extention.html', trainings=trainings, muscle = "Передпліччя")
+
+@app.route('/trapezium')
+def trapezium():
+    trainings = all_exercises.find()
+    return render_template('exercises_extention.html', trainings=trainings, muscle = "Трапеція")
+
 if __name__ == '__main__':
     app.run(debug=True)
