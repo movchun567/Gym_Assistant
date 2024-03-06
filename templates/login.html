@@ -18,9 +18,10 @@
                   <div id="Insertion">
                   </div>
                   <!-- Form Fields Here -->
-                    <form class="Insert_Form" name="Insert_Form" method="post" action="{{ url_for('main_page') }}" >
+                    <form class="Insert_Form" name="login_form" method="POST" action="/user/login" >
                       <input type="email" name="email"required placeholder="Пошта">
                       <input type="password" name="password_1"required placeholder="Пароль"> 
+                      <p class="error error--hidden"></p>
                       <input type="submit" name="submit" value="Увійти" class="button" />
                     </form>
                 </div>
