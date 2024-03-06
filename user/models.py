@@ -12,7 +12,6 @@ class User:
             "name" : request.form.get('name'),
             "email" : request.form.get('email'),
             "password" : request.form.get('password_1'),
-            "bdate" : request.form.get('bdate'),
             "gender" : request.form.get('gender'),
             "weight" : request.form.get('weight'),
             "height" : request.form.get('height')
