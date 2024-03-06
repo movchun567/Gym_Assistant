@@ -10,9 +10,8 @@
         <div class="icon_container">
             <div class="icon_container" id="icon"></div>
         </div>
-        <div class="gray_bcground">
+        <div>
             <span class="v633_61"><h2>Реєстрація</h2> </span>
-            <p style="text-align: center; font-family: Montserrat;">Якщо ти новий користувач</p>
             <div class="Form">
                 <div class="tab-content">
                   <div id="Insertion">
@@ -57,7 +56,9 @@
                   </script>
                 </div>
               </div>
-        </div>
+            <h3 style="font-family: Montserrat;">Вже маєш профіль</h3>
+            <a href="{{ url_for('login_form') }}" style="font-family: Montserrat; font-size: medium;">Зареєструватися</a>
+          </div>
         
     </body> 
 </html>

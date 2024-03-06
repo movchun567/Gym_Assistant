@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
-        <link href="/static/css/registration_form.css" rel="stylesheet" />
-    </head>
-    <body>
-        <div class="icon_container">
-            <div class="icon_container" id="icon"></div>
+  <head>
+      <meta charset="UTF-8">
+      <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+      <link href="/static/css/registration_form.css" rel="stylesheet" />
+  </head>
+  <body>
+      <div class="icon_container">
+        <div class="icon_container" id="icon">
         </div>
-        <div class="gray_bcground">
-            <span class="v633_61"><h2>Вхід</h2> </span>
-            <h3 style="text-align: center; font-family: Montserrat;">Якщо вже маєш аккаунт</h3>
-            <div class="Form" style="text-align: center;">
-                <div class="tab-content">
-                  <div id="Insertion">
-                  </div>
-                  <!-- Form Fields Here -->
-                    <form class="Insert_Form" name="Insert_Form" method="POST" action="{{ url_for('log_form') }}">
-                      <input type="email" id="username" name="email"required placeholder="Пошта", required>
-                      <input type="password" id="username" name="password_1"required placeholder="Пароль" minlength="6" maxlength="20" required> 
-                      <input type="submit" name="submit" value="Увійти" class="button" />
-                    </form>
-                </div>
-                <h3 style="font-family: Montserrat;">Не маєш профілю?</h3>
-                <a href="{{ url_for('registration_page') }}" style="font-family: Montserrat; font-size: medium;">Зареєструватися</a>
+      </div>
+      <div>
+        <span class="v633_61"><h2>Вхід</h2></span>
+        <div class="Form" style="text-align: center;">
+            <div class="tab-content">
+              <div id="Insertion"></div>
               </div>
+                <form class="Insert_Form" name="Insert_Form" method="POST" action="{{ url_for('main_page') }}">
+                  <input type="email" id="username" name="email"required placeholder="Пошта", required>
+                  <input type="password" id="username" name="password_1"required placeholder="Пароль" minlength="6" maxlength="20" required> 
+                  <input type="submit" name="submit" value="Увійти" class="button" />
+                </form>
+              </div>
+              <h3 style="font-family: Montserrat;">Не маєш профілю?</h3>
+              <a href="{{ url_for('registration_form') }}" style="font-family: Montserrat; font-size: medium;">Зареєструватися</a>
             </div>
-    </body> 
+          </div>
+        </div>
+      </div>
+  </body> 
 </html>

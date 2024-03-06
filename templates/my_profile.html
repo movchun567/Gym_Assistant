@@ -21,11 +21,12 @@
         <div class="gray_bcground">
             <span class="v633_61"><h2>Мій профіль</h2></span>
             <div class = 'profile_photo'></div>
-            <p class = 'characteristics'>Імʼя користувача:  </p>
-            <p class = 'characteristics'>Вік:  </p>
-            <p class = 'characteristics'>Стать:  </p>
+            <p class = 'characteristics'>Імʼя користувача: {{session['user']['name']}} </p>
+            <p class = 'characteristics'>Вага:  {{session['user']['weight']}}</p>
+            <p class = 'characteristics'>Зріст:  {{session['user']['height']}} см</p>
+            <p class = 'characteristics'>Стать: {{session['user']['gender']}}</p>
         </div>
-        <div class="saved_trainings">
+        <div class="saved_trainings" id ="training">
             <span class="v633_61"><h2>Збережені тренування</h2></span>
             <div class="grid">
                 <div class="grid__item_video">
