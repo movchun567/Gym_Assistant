@@ -99,8 +99,8 @@ def calves():
     trainings = all_exercises.find()
     return render_template('exercises_extention.html', trainings=trainings, muscle = "М'язи ікри")
 
-@app.route('/forearm')
-def forearm():
+@app.route('/forearms')
+def forearms():
     trainings = all_exercises.find()
     return render_template('exercises_extention.html', trainings=trainings, muscle = "Передпліччя")
 
