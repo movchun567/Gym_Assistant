@@ -22,6 +22,6 @@ class User:
             return jsonify({"error" : "Email address already in use"}), 400
 
         if db['users'].insert_one(user):
-            return render_template('my_profile.html')
+            return render_template('main_page.html')
 
         return jsonify({"error" : "Signup failed"}), 400
