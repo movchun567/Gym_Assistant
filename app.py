@@ -84,8 +84,8 @@ def abs():
     trainings = all_exercises.find()
     return render_template('exercises_extention.html', trainings=trainings, muscle = "М'язи пресу")
 
-@app.route('/lower_back')
-def lower_back():
+@app.route('/back_lower')
+def back_lower():
     trainings = all_exercises.find()
     return render_template('exercises_extention.html', trainings=trainings, muscle = "Тазобедренний суглоб")
 
