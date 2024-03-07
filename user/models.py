@@ -40,7 +40,7 @@ class User:
             "email" : request.form.get('email')
         })
 
-        if user: #and pbkdf2_sha256.verify(request.form.get('password'), user['password']):
+        if user and pbkdf2_sha256.verify(request.form.get('password_1'), user['password']):
             return self.start_session(user)
 
         error_message = "Неправильна пошта або пароль"
