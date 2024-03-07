@@ -23,7 +23,8 @@ class User:
         }
         user['password'] = pbkdf2_sha256.encrypt(user['password'])
         if db['users'].find_one({"email" : user['email']}):
-            return jsonify({"error" : "Email address already in use"}), 400
+            error_message = "Пошта вже використовується"
+            return render_template('registration_form.html', error_message=error_message)
 
         if db['users'].insert_one(user):
             return self.start_session(user)
@@ -42,4 +43,5 @@ class User:
         if user: #and pbkdf2_sha256.verify(request.form.get('password'), user['password']):
             return self.start_session(user)
 
-        return jsonify({"error" : "Invalid login credentials"}), 401
+        error_message = "Неправильна пошта або пароль"
+        return render_template('login.html', error_message=error_message)
