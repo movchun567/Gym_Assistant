@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, session, url_for
+from flask import Flask, render_template, redirect, url_for
 from functools import wraps
 from pymongo import MongoClient
 import certifi
@@ -14,24 +14,9 @@ all_exercises = db['all_exercises']
 
 from user import routes
 
-# def login_required(f):
-#     @wraps(f)
-#     def wrap(*args, **kwargs):
-#         if 'logged_in' in session:
-#             return f(*args, **kwargs)
-#         else:
-#             return redirect('/')
-#     return wrap
-
 @app.route('/')
 def main_page():
     return render_template('main_page.html')
-
-# @app.route('/my_profile/')
-# @login_required
-# def my_profile():
-#     return render_template('my_profile.html')
-
 
 @app.route('/my_profile/')
 def my_profile():

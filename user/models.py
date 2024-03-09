@@ -3,6 +3,8 @@ import uuid
 from passlib.hash import pbkdf2_sha256
 from app import db
 
+users = db['users']
+
 class User:
     def start_session(self, user):
         session['logged_in'] = True
@@ -45,3 +47,12 @@ class User:
 
         error_message = "Неправильна пошта або пароль"
         return render_template('login.html', error_message=error_message)
+    
+    def save_training(self):
+        user_id = session['user']['_id']
+        if 'trainings' not in users.find_one({'_id': user_id}):
+            users.update_one({'_id': user_id},{'$set': {'trainings': []}})  # query to find the user's document)
+        training_id = request.form.get('training_id')
+        users.update_one({'_id': user_id},
+        {'$push': {'trainings': training_id}})
+        return '', 204

@@ -13,13 +13,16 @@
                 </div>
                 <div class="description">
                     <h2>{{ training.name }}</h2>
-                    <p>{{ training.description }}</p>
+                    <p>{{ training.description }} {{ training._id }}</p>
                 </div>
-                <button onclick="Toggle(this)" class='mark'>
-                <span class="material-icons-outlined" >
-                    bookmark
-                </span>
-                </button>
+                <form action="{{ url_for('save_training') }}" method="post">
+                    <button onclick="Toggle(this)" class='mark'>
+                    <span class="material-icons-outlined" >
+                        bookmark
+                    </span>
+                    </button>
+                    <input type="hidden" name="training_id" value="{{ training._id }}">
+                </form>
             </div>
         </div>
         <a id = 'my_training'></a>
