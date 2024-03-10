@@ -52,7 +52,27 @@ class User:
         user_id = session['user']['_id']
         if 'trainings' not in users.find_one({'_id': user_id}):
             users.update_one({'_id': user_id},{'$set': {'trainings': []}})  # query to find the user's document)
-        training_id = request.form.get('training_id')
+        users.update_one({'_id': user_id},  # query to find the user's document
+        {'$push': {'trainings_name': request.form.get('training_name')}})  # update operation
         users.update_one({'_id': user_id},
-        {'$push': {'trainings': training_id}})
+        {'$push': {'trainings': { 'training_name': request.form.get('training_name'), 'training_description': request.form.get('training_description')}}})
         return '', 204
+    
+    def del_training(self):
+        # user_id = session['user']['_id']
+        # training_name = request.form.get('training_name')
+        # users.update_one({'_id': user_id},  # query to find the user's document
+        # {'$pull': {'trainings_name': training_name}})
+        # users.update_one({'_id': user_id},  # query to find the user's document
+        # {'$pull': {'trainings': {'training_name': training_name}}})
+        # return '', 204
+        user_id = session['user']['_id']
+        # if 'trainings' not in users.find_one({'_id': user_id}):
+        #     users.update_one({'_id': user_id},{'$set': {'trainings': []}})  # query to find the user's document)
+        # training_id = request.form.get('training_id')
+        users.update_one({'_id': user_id},  # query to find the user's document
+        {'$pull': {'trainings_name': request.form.get('training_name')}})  # update operation
+        users.update_one({'_id': user_id},
+        {'$pull': {'trainings': { 'training_name': request.form.get('training_name'), 'training_description': request.form.get('training_description')}}})
+        return '', 204
+    

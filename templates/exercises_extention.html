@@ -13,8 +13,9 @@
                 </div>
                 <div class="description">
                     <h2>{{ training.name }}</h2>
-                    <p>{{ training.description }} {{ training._id }}</p>
+                    <p>{{ training.description }}</p>
                 </div>
+                {%if training.name not in user_saved%}
                 <form action="{{ url_for('save_training') }}" method="post">
                     <button onclick="Toggle(this)" class='mark'>
                     <span class="material-icons-outlined" >
@@ -22,7 +23,21 @@
                     </span>
                     </button>
                     <input type="hidden" name="training_id" value="{{ training._id }}">
+                    <input type="hidden" name="training_name" value="{{ training.name }}">
+                    <input type="hidden" name="training_description" value="{{ training.description}}">
                 </form>
+                {% else %}
+                <form action="{{ url_for('del_training') }}" method="post">
+                    <button onclick="Toggle(this)" class='mark'>
+                        <span class="material-icons-outlined" style="color:black;">
+                            bookmark
+                        </span>
+                    </button>
+                    <input type="hidden" name="training_id" value="{{ training._id }}">
+                    <input type="hidden" name="training_name" value="{{ training.name }}">
+                    <input type="hidden" name="training_description" value="{{ training.description}}">
+                </form>
+                {% endif %}
             </div>
         </div>
         <a id = 'my_training'></a>

@@ -6,6 +6,29 @@
         <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
         <link href="/static/css/my_profile.css" rel="stylesheet" />
         <link rel="icon" type="image/png" href="/static/images/weights.png">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet">
+      <style>
+        .mark{
+        background: transparent;
+        border: none;
+        }
+        .material-icons-outlined {
+        color: gray;
+        }
+        </style>
+        <script>
+            function Toggle(button){
+            var to_change = button.querySelector('span');
+            if (to_change.style.color == 'black'){
+                to_change.style.color ='grey';
+
+            }
+            else{
+                to_change.style.color ='black';
+            }
+            }
+      </script>
     </head>
     <body>
         <div class="icon_container">
@@ -43,7 +66,9 @@
         <div class="saved_trainings" id ="training">
             <span class="v633_61"><h2>Збережені тренування</h2></span>
             <div class="grid">
-                <div class="grid__item_video">
+                {%block your_trainings%}
+                {%endblock your_trainings%}
+                <!-- <div class="grid__item_video">
                     <div class = "video">
                         <iframe width="560" height="315" src="https://www.youtube.com/embed/SbVaA2XgDwI?si=YnOASgwFgt1-iyLZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
@@ -64,8 +89,8 @@
                         <p>Розведення рук з гантелями - це фізична вправа, що виконується з додатковим обтяженням задля збільшення сили та об'єму дельтоподібних м'язив плеча.</p>
                         <p>Виконуйте підйом так, щоб у верхній точці руху плечей, лікоть і кисть утворювали одну пряму лінію, а мізинці повинні бути вище великих пальців. Намагайтеся якомога менше розгойдуватися тулубом – інерція значно зменшує ефективність вправи. Не опускайте руки повністю вниз і не торкайтеся ними ніг. Не варто використовувати занадто велику вагу, інакше ви просто не зможете відчути роботу дельтоподібних м’язів. На вдиху – плавно вниз, на видиху – вгору.</p>
                     </div>
-                </div>
-            </div>
+                </div>-->
+            </div> 
             <a id = 'my_training'></a>
         </div>
     </body> 

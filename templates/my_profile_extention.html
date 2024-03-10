@@ -1,0 +1,26 @@
+{% extends "my_profile.html" %}
+
+{% block your_trainings %}
+    <div class='cantainer-3'>
+    <div class="saved_trainings">
+    {% for training_obj in user_trainings%}
+    <div class="grid">
+        <div class="grid__item_video">
+            
+            <div class="description">
+                <h2>{{ training_obj['training_name'] }}</h2>
+                <p>{{  training_obj['training_description'] }}</p>
+            </div>
+            <form action="{{ url_for('del_training') }}" method="post">
+                <button onclick="Toggle(this)" class='mark'>
+                    <span class="material-icons-outlined"  style="color:black;">
+                        bookmark
+                    </span>
+                </button>
+                <input type="hidden" name="training_name" value="{{ training_obj['training_name'] }}">
+                <input type="hidden" name="training_description" value="{{ training_obj['training_description'] }}">
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock your_trainings %}

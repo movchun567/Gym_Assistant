@@ -17,3 +17,7 @@ def login():
 @app.route('/user/save_training', methods=['POST'])
 def save_training():
     return User().save_training()
+
+@app.route('/user/del_training', methods=['POST'])
+def del_training():
+    return User().del_training()
