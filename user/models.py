@@ -21,7 +21,9 @@ class User:
             "password" : request.form.get('password_1'),
             "gender" : request.form.get('gender'),
             "weight" : request.form.get('weight'),
-            "height" : request.form.get('height')
+            "height" : request.form.get('height'),
+            "trainings_name": [],
+            "trainings":[]
         }
         user['password'] = pbkdf2_sha256.encrypt(user['password'])
         if db['users'].find_one({"email" : user['email']}):
@@ -49,9 +51,7 @@ class User:
         return render_template('login.html', error_message=error_message)
     
     def save_training(self):
-        user_id = session['user']['_id']
-        if 'trainings' not in users.find_one({'_id': user_id}):
-            users.update_one({'_id': user_id},{'$set': {'trainings': []}})  # query to find the user's document)
+        user_id = session['user']['_id'] # query to find the user's document)
         users.update_one({'_id': user_id},  # query to find the user's document
         {'$push': {'trainings_name': request.form.get('training_name')}})  # update operation
         users.update_one({'_id': user_id},
