@@ -2,6 +2,8 @@ from flask import Flask, jsonify, request, render_template, session, redirect
 import uuid
 from passlib.hash import pbkdf2_sha256
 from app import db
+import gridfs
+import base64
 
 users = db['users']
 
@@ -23,7 +25,8 @@ class User:
             "weight" : request.form.get('weight'),
             "height" : request.form.get('height'),
             "trainings_name": [],
-            "trainings":[]
+            "trainings":[],
+            "profile_image": {}
         }
         user['password'] = pbkdf2_sha256.encrypt(user['password'])
         if db['users'].find_one({"email" : user['email']}):
@@ -59,20 +62,22 @@ class User:
         return '', 204
     
     def del_training(self):
-        # user_id = session['user']['_id']
-        # training_name = request.form.get('training_name')
-        # users.update_one({'_id': user_id},  # query to find the user's document
-        # {'$pull': {'trainings_name': training_name}})
-        # users.update_one({'_id': user_id},  # query to find the user's document
-        # {'$pull': {'trainings': {'training_name': training_name}}})
-        # return '', 204
         user_id = session['user']['_id']
-        # if 'trainings' not in users.find_one({'_id': user_id}):
-        #     users.update_one({'_id': user_id},{'$set': {'trainings': []}})  # query to find the user's document)
-        # training_id = request.form.get('training_id')
         users.update_one({'_id': user_id},  # query to find the user's document
         {'$pull': {'trainings_name': request.form.get('training_name')}})  # update operation
         users.update_one({'_id': user_id},
         {'$pull': {'trainings': { 'training_name': request.form.get('training_name'), 'training_description': request.form.get('training_description')}}})
         return '', 204
     
+    def profile_image(self):
+        # fs = gridfs.GridFS(db)
+        user_id = session['user']['_id']
+        # file = request.form.get('profile_image')
+        # file = fs.get_last_version(filename="file")
+        # contents = file.read()
+
+    # convert the image data to a Base64 string
+        # base64_string = base64.b64encode(contents).decode('utf-8')
+        users.update_one({'_id': user_id},
+        {'$set': {'profile_image': request.form.get('profile_image')}})
+        return '', 204
