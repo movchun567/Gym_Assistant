@@ -46,14 +46,14 @@
             <div class='profile'>
                 <div class="profile-pic" style="display: flex;">
                     <label class="-label" for="file">
-                        <!-- <span class="glyphicon glyphicon-camera"></span> -->
+                        <span class="glyphicon glyphicon-camera"></span>
                         <input id="file" type="file" onchange="loadFile(event)"/>
                         <img id="output" width="200"/></span>
                     </label>
                 </div>
             </div>
             <br>
-            <!-- <input type="file" id="fileInput" onchange="loadFile(event)"> -->
+            <input type="file" id="fileInput" onchange="loadFile(event)">
             <img id="output">
             <script src="/static/js/profile_photo.js"></script>
             <p class = 'characteristics'>Імʼя користувача: {{session['user']['name']}} </p>
@@ -63,7 +63,9 @@
             <a href="/user/signout" class="button" style="font-family: Montserrat;">Вийти з профілю</a>
             <br><br>
         </div>
+        {% if user_trainings %}
         {%block your_trainings%}
         {%endblock your_trainings%}
+        {%endif%}
     </body> 
 </html>
