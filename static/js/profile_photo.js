@@ -1,7 +1,7 @@
-  var loadFile = function (event) {
-    var image = document.getElementById("output");
-    image.src = URL.createObjectURL(event.target.files[0]);
-};
+//   var loadFile = function (event) {
+//     var image = document.getElementById("output");
+//     image.src = URL.createObjectURL(event.target.files[0]);
+// };
 // function loadFile(event) {
 //   var reader = new FileReader();
 //   reader.onloadend = function() {
