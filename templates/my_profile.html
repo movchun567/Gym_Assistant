@@ -45,7 +45,6 @@
             <span class="v633_61"><h2>Мій профіль</h2></span>
             <!-- <img src="data:image/jpeg;base64,{{ image_data }}"> -->
             <div class='profile'>
-                <form action="{{url_for('profile_image')}}" method="post">
                 <div class="profile-pic" style="display: flex;">
                     <label class="-label" for="file">
                         <span class="glyphicon glyphicon-camera"></span>
@@ -54,7 +53,6 @@
                     </label>
                     <input type="hidden" id="profile-pic" name="profile-pic" value='' style="display: none;"/>
                 </div>
-                </form>
             </div>
             <br>
             <img id="output">
