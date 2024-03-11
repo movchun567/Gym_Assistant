@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, render_template, session, redirect
+from flask import Flask, jsonify, request, render_template, session, redirect, url_for
 import uuid
 from passlib.hash import pbkdf2_sha256
 from app import db
@@ -58,7 +58,7 @@ class User:
         users.update_one({'_id': user_id},  # query to find the user's document
         {'$push': {'trainings_name': request.form.get('training_name')}})  # update operation
         users.update_one({'_id': user_id},
-        {'$push': {'trainings': { 'training_name': request.form.get('training_name'), 'training_description': request.form.get('training_description')}}})
+        {'$push': {'trainings': { 'training_url': request.form.get('training_url'), 'training_name': request.form.get('training_name'), 'training_description': request.form.get('training_description')}}})
         return '', 204
     
     def del_training(self):
@@ -66,7 +66,7 @@ class User:
         users.update_one({'_id': user_id},  # query to find the user's document
         {'$pull': {'trainings_name': request.form.get('training_name')}})  # update operation
         users.update_one({'_id': user_id},
-        {'$pull': {'trainings': { 'training_name': request.form.get('training_name'), 'training_description': request.form.get('training_description')}}})
+        {'$pull': {'trainings': { 'training_url': request.form.get('training_url'), 'training_name': request.form.get('training_name'), 'training_description': request.form.get('training_description')}}})
         return '', 204
     
     # def profile_image(self):
@@ -90,5 +90,5 @@ class User:
     def update(self):
         user_id = session['user']['_id']
         users.update_one({'_id': user_id},
-        {'$set':  {'gender': request.form.get('gender'), 'weight': request.form.get('weight'), 'height': request.form.get('height')}})
-        return render_template('my_profile.html')
+        {'$set':  {'weight': request.form.get('weight'), 'height': request.form.get('height')}})
+        return redirect(url_for('my_profile'))

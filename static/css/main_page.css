@@ -307,6 +307,7 @@ a:active {
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   justify-self: space-around;
   align-items: space-around;
+  grid-gap: 25px
 }
 .grid__item {
   padding: 50px;

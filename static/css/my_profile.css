@@ -3,6 +3,8 @@
 }
 body {
   font-size: 14px;
+  justify-content: center;
+  align-items: center;
 }
 .head{ 
   display: flex;
@@ -74,9 +76,11 @@ a:active {
 .gray_bcground {
   width: 100%;
   margin-top: 40px;
+  /* margin-bottom: 40px; */
   background: rgba(247,246,246,1);
   z-index: -1;
   overflow: hidden;
+  justify-content: center;
 }
 .icons{
   margin-top: 100px;
@@ -371,7 +375,7 @@ a:active {
   outline: none;
   border-radius: 50px;
   margin: 10px 0 30px 0;
-  margin-top: 25px;
+  margin-bottom: 25px;
   font-size: 25px;
   background: rgba(255,255,255,1);
   transition: all.5s ease;
@@ -384,7 +388,11 @@ a:active {
   align-items: center; 
   display: block; 
   line-height: 2;
+  margin-block-end: 50px;
+  margin-block-start: 50px;
 }
+
+
 
 .button:hover {
   background: rgba(255,255,255,1);
@@ -396,11 +404,22 @@ a:active {
   margin-left: 1rem;
   transition: var(--transition);
 }
-.characteristics{
+/* .characteristics{
   color: rgba(51,51,51,1);
   font-family: Montserrat;
   font-size: 40px;
-  padding-left: 150px;
+  /* padding-left: 150px; 
+  justify-content: center;
+} */
+.characteristics {
+  color: rgba(51,51,51,1);
+  font-family: Montserrat;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  /* height: 100vh; This will make sure your block takes the full viewport height */
 }
 .profile_photo {
   margin: 0px auto 100px;
@@ -411,7 +430,6 @@ a:active {
 
 .saved_trainings {
   width: 100%;
-  margin-top: 40px;
   background: rgba(247,246,246,1);
   z-index: -1;
   overflow: hidden;

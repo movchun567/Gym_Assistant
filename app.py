@@ -21,17 +21,13 @@ def main_page():
 
 @app.route('/my_profile/')
 def my_profile():
+
     user_id = session['user']['_id']
     user_trainings = users_info.find_one({'_id': user_id})['trainings']
     names_of_saved = users_info.find_one({'_id': user_id})['trainings_name']
-    # training_names=[]
-    # training_descriptions=[]
-    # for training_id in user_trainings:
-        # training_names.append(all_exercises.find_one({'_id': training_id})['name'])
-        # training_descriptions.append(all_exercises.find_one({'_id': training_id})['description'])
+    user_data =  users_info.find_one({'_id': user_id})
 
-    # info_my_trainings = list(zip(training_names, training_descriptions))
-    return render_template('my_profile_extention.html', user_trainings=user_trainings, names_of_saved=names_of_saved)
+    return render_template('my_profile_extention.html', user_trainings=user_trainings, names_of_saved=names_of_saved, user_data=user_data)
 
 @app.route('/update_parameters')
 def update_parameters():
