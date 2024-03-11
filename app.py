@@ -33,6 +33,10 @@ def my_profile():
     # info_my_trainings = list(zip(training_names, training_descriptions))
     return render_template('my_profile_extention.html', user_trainings=user_trainings, names_of_saved=names_of_saved)
 
+@app.route('/update_parameters')
+def update_parameters():
+    return render_template('update_parameters.html')
+
 @app.route('/my_training')
 def my_training():
     return redirect(url_for('my_profile')+'#training')
@@ -67,7 +71,7 @@ def chest():
 def shoulders():
     user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
     trainings = all_exercises.find()
-    return render_template('exercises_extention.html', trainings=trainings, muscle = "Плечі і дельтовидні мязи", user_saved=user_saved)
+    return render_template('exercises_extention.html', trainings=trainings, muscle = "Плечі і дельтовидні м'язи", user_saved=user_saved)
 
 @app.route('/back_upper')
 def back_upper():
@@ -103,7 +107,7 @@ def quads():
 def calves():
     user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
     trainings = all_exercises.find()
-    return render_template('exercises_extention.html', trainings=trainings, muscle = "М'язи ікри", user_saved=user_saved)
+    return render_template('exercises_extention.html', trainings=trainings, muscle = "М'язи литок", user_saved=user_saved)
 
 @app.route('/forearms')
 def forearms():

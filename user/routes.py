@@ -26,3 +26,6 @@ def del_training():
 # def profile_image():
 #     return User().profile_image()
 
+@app.route('/user/update', methods=['POST'])
+def update():
+    return User().update()

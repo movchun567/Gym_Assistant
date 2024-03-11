@@ -61,6 +61,7 @@
             <p class = 'characteristics'>Вага:  {{session['user']['weight']}}</p>
             <p class = 'characteristics'>Зріст:  {{session['user']['height']}} см</p>
             <p class = 'characteristics'>Стать: {{session['user']['gender']}}</p>
+            <a href="{{ url_for('update_parameters')}}" class="button" style="font-family: Montserrat;">Змінити параметри</a>
             <a href="/user/signout" class="button" style="font-family: Montserrat;">Вийти з профілю</a>
             <br><br>
         </div>

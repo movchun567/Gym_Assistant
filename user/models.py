@@ -76,8 +76,19 @@ class User:
         # file = fs.get_last_version(filename="file")
         # contents = file.read()
 
-    # convert the image data to a Base64 string
+        # convert the image data to a Base64 string
         # base64_string = base64.b64encode(contents).decode('utf-8')
         users.update_one({'_id': user_id},
         {'$set': {'profile_image': request.form.get('profile_image')}})
         return '', 204
+    
+    # def update_parameters(self):
+    #     user_id = session['user']['_id']
+    #     users.update_one({'_id': user_id},
+    #     {'$set': {'gender': request.form.get('gender'), 'weight': request.form.get('weight'), 'height': request.form.get('height')}})
+    #     return '', 204
+    def update(self):
+        user_id = session['user']['_id']
+        users.update_one({'_id': user_id},
+        {'$set':  {'gender': request.form.get('gender'), 'weight': request.form.get('weight'), 'height': request.form.get('height')}})
+        return render_template('my_profile.html')
