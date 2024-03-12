@@ -17,7 +17,8 @@ from user import routes
 
 @app.route('/')
 def main_page():
-    return render_template('main_page.html')
+    trainings = all_exercises.find()
+    return render_template('main_page.html', trainings=trainings)
 
 @app.route('/my_profile/')
 def my_profile():

@@ -54,12 +54,27 @@ class User:
         return render_template('login.html', error_message=error_message)
     
     def save_training(self):
-        user_id = session['user']['_id'] # query to find the user's document)
+        user_id = session['user']['_id'] # query to find the user's document)        
+        if request.form.get('training_name') in users.find_one({'_id': user_id})['trainings_name']:
+            users.update_one({'_id': user_id},  # query to find the user's document
+            {'$pull': {'trainings_name': request.form.get('training_name')}})  # update operation
+            users.update_one({'_id': user_id},
+            {'$pull': {'trainings': { 'training_url': request.form.get('training_url'), 'training_name': request.form.get('training_name'), 'training_description': request.form.get('training_description')}}})
+            return '', 204
         users.update_one({'_id': user_id},  # query to find the user's document
         {'$push': {'trainings_name': request.form.get('training_name')}})  # update operation
         users.update_one({'_id': user_id},
         {'$push': {'trainings': { 'training_url': request.form.get('training_url'), 'training_name': request.form.get('training_name'), 'training_description': request.form.get('training_description')}}})
         return '', 204
+
+
+    # def save_training(self):
+    #     user_id = session['user']['_id'] # query to find the user's document)        
+    #     users.update_one({'_id': user_id},  # query to find the user's document
+    #     {'$push': {'trainings_name': request.form.get('training_name')}})  # update operation
+    #     users.update_one({'_id': user_id},
+    #     {'$push': {'trainings': { 'training_url': request.form.get('training_url'), 'training_name': request.form.get('training_name'), 'training_description': request.form.get('training_description')}}})
+    #     return '', 204
     
     def del_training(self):
         user_id = session['user']['_id']

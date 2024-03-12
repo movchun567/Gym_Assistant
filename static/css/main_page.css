@@ -6,6 +6,33 @@
 body {
   font-size: 14px;
 }
+.mark{
+  background: transparent;
+  border: none;
+}
+.material-icons-outlined {
+  color: gray;
+}
+.grid {
+  display: grid;
+  margin: 30px;
+  font-family: Montserrat;
+  grid-template-rows: repeat(minmax(4, 100px));
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  justify-self: space-around;
+  align-items: space-around;
+}
+.grid__item {
+  padding: 50px;
+  place-items: center;
+  background-color: #fff;
+  border-radius: .4rem;
+  overflow: hidden;
+  box-shadow: 0 3rem 6rem rgba(0, 0, 0, .1);
+  cursor: pointer;
+  transition: var(--transition);
+}
+  
 .head{ 
   display: flex;
   justify-content: space-around; 

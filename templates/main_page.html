@@ -5,6 +5,20 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
         <link href="/static/css/main_page.css" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet">
+        <script>
+            function Toggle(button){
+            var to_change = button.querySelector('span');
+            if (to_change.style.color == 'black'){
+                to_change.style.color ='grey';
+
+            }
+            else{
+                to_change.style.color ='black';
+            }
+            }
+      </script>
     </head>
     <body>
         <div class="icon_container">
@@ -1164,5 +1178,45 @@
 
         {%endif%}
         {%endif%}
+        {% for training in trainings %}
+        <div class="grid">
+            <div class="grid__item_video">
+                <div class="video">
+                    <iframe width="560" height="315" src="{{ training.video_url }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="description">
+                    <div style="display:flex;">
+                    <h2>{{ training.name }}</h2>
+                    {%if training.name not in user_saved%}
+                    <form action="{{ url_for('save_training') }}" method="post">
+                        <button width="30%" onclick="Toggle(this)" class='mark'>
+                        <span class="material-icons-outlined" >
+                            bookmark
+                        </span>
+                        </button>
+                        <input type="hidden" name="training_id" value="{{ training._id }}">
+                        <input type="hidden" name="training_url" value="{{ training.video_url }}">
+                        <input type="hidden" name="training_name" value="{{ training.name }}">
+                        <input type="hidden" name="training_description" value="{{ training.description}}">
+                    </form>
+                    {% else %}
+                    <form action="{{ url_for('del_training') }}" method="post">
+                        <button onclick="Toggle(this)" class='mark'>
+                            <span class="material-icons-outlined" style="color:black;">
+                                bookmark
+                            </span>
+                        </button>
+                        <input type="hidden" name="training_id" value="{{ training._id }}">
+                        <input type="hidden" name="training_url" value="{{ training.video_url }}">
+                        <input type="hidden" name="training_name" value="{{ training.name }}">
+                        <input type="hidden" name="training_description" value="{{ training.description}}">
+                    </form>
+                    {% endif %}
+                    </div>
+                    <p>{{ training.description }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
     </body> 
 </html>

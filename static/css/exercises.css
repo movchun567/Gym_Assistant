@@ -4,6 +4,14 @@
 body {
   font-size: 14px;
 }
+.mark{
+background: transparent;
+border: none;
+}
+.material-icons-outlined {
+color: gray;
+}
+
 .head{ 
   display: flex;
   justify-content: space-around; 
