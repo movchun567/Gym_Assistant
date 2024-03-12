@@ -43,7 +43,7 @@
                         {% if session['logged_in'] == True %}
                         <button class="card__btn"><a href="#map">Перейти<span>&rarr;</span></a></button>
                         {%else%}
-                        <div class="sections" id="main_section"><a href="{{ url_for('login_form')}}">Увійти</a></div>
+                        <div class="card__btn" id="main_section" ><a href="{{ url_for('login_form')}}">Увійти</a></div>
                         {%endif%}
                     </div>
                 </div>
