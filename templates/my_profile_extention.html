@@ -15,7 +15,7 @@
                     <h2>{{ training_obj['training_name'] }}</h2>
                     <p>{{  training_obj['training_description'] }}</p>
                 </div>
-                <form action="{{ url_for('del_training') }}" method="post">
+                <form action="{{ url_for('save_training') }}" method="post">
                     <button onclick="Toggle(this)" class='mark'>
                         <span class="material-icons-outlined"  style="color:black;">
                             bookmark
