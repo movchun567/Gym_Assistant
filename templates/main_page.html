@@ -11,7 +11,7 @@
             <div class="icon_container" id="icon"></div>
         </div>
         <div class="head">
-            <img src="/static/images/icon_smaller.png" width='70px'>
+            <a href="{{ url_for('main_page') }}"><img src="/static/images/icon_smaller.png" width='70px' ></a>
             <div class="sections" id="slogan">|     Обери, що тренуємо сьогодні</div>
             <div class="sections" id="my_training"><a href="{{ url_for('main_page') }}">Головна</a></div>
             {% if session['logged_in'] == True %}
@@ -36,24 +36,24 @@
                     </div>
                 </div>
                 <div class="grid__item">
-                    <img class="card__img" src="/static/images/map.png">
-                    <div class="card__content">
-                        <h2 class="card__header">Інтерактивна мапа</h2>
-                        <p class="card__text">Обирай на інтерактивній мапі ділянку, над якою будеш працювати сьогодні</p>
-                        {% if session['logged_in'] == True %}
-                        <button class="card__btn"><a href="#map">Перейти<span>&rarr;</span></a></button>
-                        {%else%}
-                        <div class="card__btn" id="main_section" ><a href="{{ url_for('login_form')}}">Увійти</a></div>
-                        {%endif%}
-                    </div>
-                </div>
-                <div class="grid__item">
                     <img class="card__img" src="/static/images/person.png">
                     <div class="card__content">
                         <h2 class="card__header">Власний профіль</h2>
                         <p class="card__text">Зберігай власні дані про себе</p>
                         {% if session['logged_in'] == True %}
                         <button class="card__btn"><a href="{{ url_for('my_profile') }}">Перейти<span>&rarr;</span></a></button>
+                        {%else%}
+                        <div class="card__btn_signin" id="main_section" ><a href="{{ url_for('login_form')}}">Увійти</a></div>
+                        {%endif%}
+                    </div>
+                </div>
+                <div class="grid__item">
+                    <img class="card__img" src="/static/images/map.png">
+                    <div class="card__content">
+                        <h2 class="card__header">Інтерактивна мапа</h2>
+                        <p class="card__text">Обирай на інтерактивній мапі ділянку, над якою будеш працювати сьогодні</p>
+                        {% if session['logged_in'] == True %}
+                        <button class="card__btn"><a href="#map">Перейти<span>&rarr;</span></a></button>
                         {%endif%}
                     </div>
                 </div>
