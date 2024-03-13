@@ -17,7 +17,7 @@ color: gray;
   justify-content: space-around; 
   align-items: center;  
 }
-a:link { 
+/* a:link { 
   text-decoration: none;
 } 
 a:visited { 
@@ -27,7 +27,7 @@ a:visited {
 a:hover { 
 
   /* border-bottom-width:4px ; 
-  border-bottom-style: outset; */
+  border-bottom-style: outset; 
 
   padding-bottom:3px;
   transition: 0.5s;
@@ -39,6 +39,30 @@ a:hover {
 
 a:active { 
   text-decoration: none; 
+} */
+a.underline-hover-effect {
+  text-decoration: none;
+  color: inherit;
+}
+
+.underline-hover-effect {
+  display: inline-block;
+  padding-bottom: 0.25rem; /* defines the space between text and underline */
+  position: relative;
+}
+
+.underline-hover-effect::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-image: linear-gradient(to right, #e93b3b, #f2a640);
+  transition: width 0.25s ease-out;
+}
+.underline-hover-effect:hover::before {
+  width: 100%;
 }
 .sections{
   width: 250px;
