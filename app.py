@@ -17,8 +17,9 @@ from user import routes
 
 @app.route('/')
 def main_page():
+    user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
     trainings = all_exercises.find()
-    return render_template('main_page.html', trainings=trainings)
+    return render_template('main_page.html', trainings=trainings, user_saved=user_saved)
 
 @app.route('/my_profile/')
 def my_profile():

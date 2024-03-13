@@ -13,6 +13,39 @@ body {
 .material-icons-outlined {
   color: gray;
 }
+.button{
+  margin: 50px
+}
+
+#toastBox{
+  position: fixed;
+  top: 20px;  /* Adjust as needed */
+  /* right: 20px;  Adjust as needed */
+  z-index: 9999;
+  /* position: absolute;
+  bottom: 30px;
+  right: 30px; */
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 20px;
+}
+.toast{
+  width: 300px;
+  height: 50px;
+  background: rgb(255, 255, 255);
+  border-radius: 25px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); /* Add a shadow */
+  margin: 15px 0;
+  align-items: center;
+  display: flex;
+}
+.toast span{
+  margin: 0 20px;
+  color: rgba(170,58,58,1);
+}
+
 .grid {
   display: grid;
   margin: 30px;
@@ -28,9 +61,21 @@ body {
   background-color: #fff;
   border-radius: .4rem;
   overflow: hidden;
-  box-shadow: 0 3rem 6rem rgba(0, 0, 0, .1);
+  box-shadow: 0 3rem 3rem rgba(0, 0, 0, .1);
   cursor: pointer;
   transition: var(--transition);
+  margin: 50px;
+}
+.grid__item_exerc {
+  padding: 50px;
+  place-items: center;
+  background-color: #fff;
+  border-radius: .4rem;
+  overflow: hidden;
+  box-shadow: 0 3rem 3rem rgba(0, 0, 0, .1);
+  cursor: pointer;
+  transition: var(--transition);
+  margin: 50px;
 }
   
 .head{ 
@@ -57,7 +102,16 @@ a:hover {
   background-size: 100% 10%;
   background-repeat: no-repeat;
 }
-
+.video::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 3px;
+  background-color: rgb(100, 105, 127);
+  border-radius: 0 5px 5px 0;
+}
 /* 
 .nav__link{
   position: relative;

@@ -366,7 +366,18 @@ a:active {
   transition: var(--transition);
   cursor: pointer;
 }
-
+.personal_info{
+  padding: 50px;
+  place-items: center;
+  background-color: #fff;
+  border-radius: 50px;
+  overflow: hidden;
+  box-shadow: 6rem 6rem 6rem 6rem rgba(0, 0, 0, .1);
+  cursor: pointer;
+  transition: var(--transition);
+  margin-inline: 150px;
+  margin-bottom: 100px;
+}
 .button {
 
   border: 0;
@@ -430,7 +441,6 @@ a:active {
 
 .saved_trainings {
   width: 100%;
-  background: rgba(247,246,246,1);
   z-index: -1;
   overflow: hidden;
 }
