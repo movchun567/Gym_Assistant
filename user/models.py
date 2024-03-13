@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, render_template, session, redirect, url_for
+from flask import Flask, jsonify, request, render_template, session, redirect, url_for, abort, flash
 import uuid
 from passlib.hash import pbkdf2_sha256
 from app import db
@@ -54,6 +54,12 @@ class User:
         return render_template('login.html', error_message=error_message)
     
     def save_training(self):
+        if 'user' not in session:
+            # abort(401, description="Please, log in first")
+            # return jsonify({'error': 'not_logged_in'}), 401
+            flash('Please, log in first')
+            return '', 204
+
         user_id = session['user']['_id'] # query to find the user's document)
         if request.form.get('training_name') in users.find_one({'_id': user_id})['trainings_name']:
             users.update_one({'_id': user_id},  # query to find the user's document
@@ -69,13 +75,13 @@ class User:
 
 
     # def save_training(self):
-    #     user_id = session['user']['_id'] # query to find the user's document)        
+    #     user_id = session['user']['_id'] # query to find the user's document)
     #     users.update_one({'_id': user_id},  # query to find the user's document
     #     {'$push': {'trainings_name': request.form.get('training_name')}})  # update operation
     #     users.update_one({'_id': user_id},
     #     {'$push': {'trainings': { 'training_url': request.form.get('training_url'), 'training_name': request.form.get('training_name'), 'training_description': request.form.get('training_description')}}})
     #     return '', 204
-    
+
     # def del_training(self):
     #     user_id = session['user']['_id']
     #     users.update_one({'_id': user_id},  # query to find the user's document
@@ -83,7 +89,7 @@ class User:
     #     users.update_one({'_id': user_id},
     #     {'$pull': {'trainings': { 'training_url': request.form.get('training_url'), 'training_name': request.form.get('training_name'), 'training_description': request.form.get('training_description')}}})
     #     return '', 204
-    
+
     # def profile_image(self):
     #     # fs = gridfs.GridFS(db)
     #     user_id = session['user']['_id']

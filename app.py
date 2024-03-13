@@ -1,5 +1,4 @@
 from flask import Flask, render_template, redirect, url_for, session
-from functools import wraps
 from pymongo import MongoClient
 import certifi
 
@@ -17,9 +16,12 @@ from user import routes
 
 @app.route('/')
 def main_page():
-    user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
+    if 'user' in session:
+        user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
+        trainings = all_exercises.find()
+        return render_template('main_page.html', trainings=trainings, user_saved=user_saved)
     trainings = all_exercises.find()
-    return render_template('main_page.html', trainings=trainings, user_saved=user_saved)
+    return render_template('main_page.html', trainings=trainings)
 
 @app.route('/my_profile/')
 def my_profile():

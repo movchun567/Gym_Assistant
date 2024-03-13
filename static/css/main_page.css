@@ -3,9 +3,6 @@
 * {
   box-sizing: border-box;
 }
-body {
-  font-size: 14px;
-}
 .mark{
   background: transparent;
   border: none;
@@ -13,18 +10,12 @@ body {
 .material-icons-outlined {
   color: gray;
 }
-.button{
-  margin: 50px
-}
 
 #toastBox{
+  font-family: Montserrat;
   position: fixed;
-  top: 20px;  /* Adjust as needed */
-  /* right: 20px;  Adjust as needed */
-  z-index: 9999;
-  /* position: absolute;
   bottom: 30px;
-  right: 30px; */
+  right: 30px;
   display: flex;
   align-items: flex-end;
   flex-direction: column;
@@ -35,7 +26,7 @@ body {
   width: 300px;
   height: 50px;
   background: rgb(255, 255, 255);
-  border-radius: 25px;
+  border-radius: 15px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); /* Add a shadow */
   margin: 15px 0;
   align-items: center;
@@ -43,9 +34,11 @@ body {
 }
 .toast span{
   margin: 0 20px;
-  color: rgba(170,58,58,1);
+  color:rgb(231, 96, 96);
 }
 
+/* .msg{
+} */
 .grid {
   display: grid;
   margin: 30px;
@@ -90,18 +83,30 @@ a:visited {
   text-decoration: none;
   color: rgba(51,51,51,1);
 } 
+/* a::before{
+  content:'';
+  position:absolute;
+  right:0;
+  bottom:0;
+  width:0;
+   background-image: linear-gradient(to right, #e93b3b, #f2a640); 
+  transition: width 0.25s ease-out;
+
+}
+ a:hover::before{
+  width: 100%;
+  left:0;
+  right:auto;
+} 
 a:hover { 
-
-  /* border-bottom-width:4px ; 
-  border-bottom-style: outset; */
-
   padding-bottom:3px;
   transition: 0.5s;
-  background-image: linear-gradient(90deg, #e93b3b, #f2a640);
+  background-image: linear-gradient(to right, #e93b3b, #f2a640);
   background-position: bottom;
   background-size: 100% 10%;
   background-repeat: no-repeat;
 }
+*/
 .video::after {
   content: '';
   position: absolute;
@@ -111,6 +116,30 @@ a:hover {
   width: 3px;
   background-color: rgb(100, 105, 127);
   border-radius: 0 5px 5px 0;
+} 
+a.underline-hover-effect {
+  text-decoration: none;
+  color: inherit;
+}
+
+.underline-hover-effect {
+  display: inline-block;
+  padding-bottom: 0.25rem; /* defines the space between text and underline */
+  position: relative;
+}
+
+.underline-hover-effect::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-image: linear-gradient(to right, #e93b3b, #f2a640);
+  transition: width 0.25s ease-out;
+}
+.underline-hover-effect:hover::before {
+  width: 100%;
 }
 /* 
 .nav__link{
@@ -537,7 +566,6 @@ border: 2px solid #3d47b4;
   transition: opacity 0.5s ;
   opacity: 0.5; 
   cursor: pointer;
-  color: blue; 
 } 
 /* a:hover{
   transition: 0.5s ;

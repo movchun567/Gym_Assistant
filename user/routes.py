@@ -18,9 +18,9 @@ def login():
 def save_training():
     return User().save_training()
 
-@app.route('/user/del_training', methods=['POST'])
-def del_training():
-    return User().del_training()
+# @app.route('/user/del_training', methods=['POST'])
+# def del_training():
+#     return User().del_training()
 
 # @app.route('/save_picture', methods=['POST'])
 # def profile_image():
