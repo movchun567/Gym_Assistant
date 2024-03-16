@@ -12,39 +12,39 @@
                     <iframe width="560" height="315" src="{{ training.video_url }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
                 <div class="description">
-                    <h2>{{ training.name }}</h2>
+                    <h2>{{ training.name }}
+                        {%if training.name not in user_saved%}
+                        <form action="{{ url_for('save_training') }}" method="post">
+                            <button onclick="Toggle(this)" class='mark'>
+                                <span class="material-icons-outlined">
+                                    bookmark
+                                </span>
+                            </button>
+                            <input type="hidden" name="training_id" value="{{ training._id }}">
+                            <input type="hidden" name="training_url" value="{{ training.video_url }}">
+                            <input type="hidden" name="training_name" value="{{ training.name }}">
+                            <input type="hidden" name="training_description" value="{{ training.description}}">
+                        </form>
+                        {% else %}
+                        <form action="{{ url_for('save_training') }}" method="post">
+                            <button onclick="Toggle(this)" class='mark'>
+                                <span class="material-icons-outlined" style="color:black;">
+                                    bookmark
+                                </span>
+                            </button>
+                            <input type="hidden" name="training_id" value="{{ training._id }}">
+                            <input type="hidden" name="training_url" value="{{ training.video_url }}">
+                            <input type="hidden" name="training_name" value="{{ training.name }}">
+                            <input type="hidden" name="training_description" value="{{ training.description}}">
+                        </form>
+                        {% endif %}
+                    </h2>
                     <p>{{ training.description }}</p>
+                    <!-- </div> -->
                 </div>
-                {%if training.name not in user_saved%}
-                <form action="{{ url_for('save_training') }}" method="post">
-                    <button onclick="Toggle(this)" class='mark'>
-                    <span class="material-icons-outlined" >
-                        bookmark
-                    </span>
-                    </button>
-                    <input type="hidden" name="training_id" value="{{ training._id }}">
-                    <input type="hidden" name="training_url" value="{{ training.video_url }}">
-                    <input type="hidden" name="training_name" value="{{ training.name }}">
-                    <input type="hidden" name="training_description" value="{{ training.description}}">
-                </form>
-                {% else %}
-                <form action="{{ url_for('save_training') }}" method="post">
-                    <button onclick="Toggle(this)" class='mark'>
-                        <span class="material-icons-outlined" style="color:black;">
-                            bookmark
-                        </span>
-                    </button>
-                    <input type="hidden" name="training_id" value="{{ training._id }}">
-                    <input type="hidden" name="training_url" value="{{ training.video_url }}">
-                    <input type="hidden" name="training_name" value="{{ training.name }}">
-                    <input type="hidden" name="training_description" value="{{ training.description}}">
-                </form>
-                {% endif %}
             </div>
         </div>
-        <a id = 'my_training'></a>
+
         {% endif %}
     {% endfor %}
-    </div>
-    </div>
 {% endblock content %}

@@ -42,25 +42,25 @@
             <span class="v633_60"><p style="text-align: center; margin-inline: 200px">Обирай вправи для своєї програми тренувань на кожен вид мʼяз. Зручна інтерактивна мапа мʼязової системи допоможе легко зорієнтуватися.</p></span>
             <div class="flex-container">
                 <a href="{{ url_for('my_training')}}">
-                    <div class="grid__item">
+                    <div class="grid__item_header">
                         <img class="card__img" src="/static/images/weights.png">
                         <div class="card__content">
                             <h2 class="card__header">Обрані тренування</h2>
                             <p class="card__text">Зберігай та додавай у обрані тренування для себе</p>
                             {% if session['logged_in'] == True %}
-                            <button class="card__btn">Перейти<span>&rarr;</span></button>
+                            <button class="card__btn">Перейти</button>
                             {%endif%}
                         </div>
                     </div>
                 </a>
                 <a href="{{ url_for('login_form')}}">
-                    <div class="grid__item">
+                    <div class="grid__item_header">
                         <img class="card__img" src="/static/images/person.png">
                         <div class="card__content">
                             <h2 class="card__header">Власний профіль</h2>
                             <p class="card__text">Зберігай власні дані про себе</p>
                             {% if session['logged_in'] == True %}
-                            <button class="card__btn">Перейти<span>&rarr;</span></button>
+                            <button class="card__btn">Перейти</button>
                             {%else%}
                             <div class="card__btn_signin" id="main_section">Увійти</div>
                             {%endif%}
@@ -68,13 +68,13 @@
                     </div>
                 </a>
                 <a href="#map">
-                    <div class="grid__item">
+                    <div class="grid__item_header">
                         <img class="card__img" src="/static/images/map.png">
                         <div class="card__content">
                             <h2 class="card__header">Інтерактивна мапа</h2>
                             <p class="card__text">Обирай на інтерактивній мапі ділянку, над якою будеш працювати сьогодні</p>
                             {% if session['logged_in'] == True %}
-                            <button class="card__btn">Перейти<span>&rarr;</span></button>
+                            <button class="card__btn">Перейти</button>
                             {%endif%}
                         </div>
                     </div>
@@ -1187,63 +1187,64 @@
         {%endif%}
         {%endif%}
         {% for training in trainings %}
-        <div class="grid__item_exerc">
-            <div class="grid__item_video" style="display:flex;">
-                <div class="video">
-                    <iframe width="560" height="315" src="{{ training.video_url }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                </div>
-                <div class="description">
-                    <div style="display:flex;">
-                    <h2>{{ training.name }}</h2>
-                    <form action="{{ url_for('save_training') }}" method="post">
-                        {%if 'user' not in session%}
-                        <button width="30%" onclick="showToast(message)" class='mark'>
-                            <span class="material-icons-outlined">
-                                bookmark
-                            </span>
-                        </button>
-                        <div id="toastBox">
-                        </div>
-                        <script>
-                        let toastBox = document.getElementById("toastBox");
-                        let message = '<span class="material-symbols-outlined">priority_high</span> Спочатку увійдіть у свій акаунт'
-                    
-                        function showToast(message) {
-                        let toast = document.createElement("div");
-                        toast.classList.add("toast");
-                        toast.innerHTML = message;
-                        toastBox.appendChild(toast);
-                        document.getElementById("toastBox").appendChild(toast);
-                        setTimeout(function() {
-                            toast.remove();
-                        }, 3000);
-                        }
-                        </script>
-                        {%elif training.name not in user_saved%}
-                        <button width="30%" onclick="Toggle(this)" class='mark'>
-                            <span class="material-icons-outlined">
-                                bookmark
-                            </span>
-                        </button>
-                        {% else %}
-                        <button onclick="Toggle(this)" class='mark'>
-                            <span class="material-icons-outlined" style="color:black;">
-                                bookmark
-                            </span>
-                        </button>
-                        {% endif %}
-                        <input type="hidden" name="training_id" value="{{ training._id }}">
-                        <input type="hidden" name="training_url" value="{{ training.video_url }}">
-                        <input type="hidden" name="training_name" value="{{ training.name }}">
-                        <input type="hidden" name="training_description" value="{{ training.description}}">
-                    </form>
+        <!-- <div class="grid__item_exerc"> -->
+            <div class="grid">
+                <div class="grid__item_video">
+                    <div class="video">
+                        <iframe width="560" height="315" src="{{ training.video_url }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
-                    <p>{{ training.description }}</p>
+                    <div class="description">
+                        <h2>{{ training.name }}
+                            <form action="{{ url_for('save_training') }}" method="post">
+                                {%if 'user' not in session%}
+                                <button width="30%" onclick="showToast(message)" class='mark'>
+                                    <span class="material-icons-outlined">
+                                        bookmark
+                                    </span>
+                                </button>
+                                <div id="toastBox">
+                                </div>
+                                <script>
+                                let toastBox = document.getElementById("toastBox");
+                                let message = '<span class="material-symbols-outlined">priority_high</span> <div style="font-size: 15px;">Спочатку увійдіть у свій акаунт</div>';
+                            
+                                function showToast(message) {
+                                let toast = document.createElement("div");
+                                toast.classList.add("toast");
+                                toast.innerHTML = message;
+                                toastBox.appendChild(toast);
+                                document.getElementById("toastBox").appendChild(toast);
+                                setTimeout(function() {
+                                    toast.remove();
+                                }, 3000);
+                                }
+                                </script>
+                                {%elif training.name not in user_saved%}
+                                <button width="30%" onclick="Toggle(this)" class='mark'>
+                                    <span class="material-icons-outlined">
+                                        bookmark
+                                    </span>
+                                </button>
+                                {% else %}
+                                <button onclick="Toggle(this)" class='mark'>
+                                    <span class="material-icons-outlined" style="color:black;">
+                                        bookmark
+                                    </span>
+                                </button>
+                                {% endif %}
+                                <input type="hidden" name="training_id" value="{{ training._id }}">
+                                <input type="hidden" name="training_url" value="{{ training.video_url }}">
+                                <input type="hidden" name="training_name" value="{{ training.name }}">
+                                <input type="hidden" name="training_description" value="{{ training.description}}">
+                            </form>
+                        </h2>
+                        <p>{{ training.description }}</p>
+                    </div>
+                    
+                    
                 </div>
             </div>
-        </div>
+        <!-- </div> -->
         {% endfor %}
-        <!-- {%block all_exercises%}
-        {%endblock all_exercises%} -->
     </body> 
 </html>

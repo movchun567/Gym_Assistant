@@ -4,6 +4,7 @@ from passlib.hash import pbkdf2_sha256
 from app import db
 import gridfs
 import base64
+import datetime
 
 users = db['users']
 
@@ -74,42 +75,29 @@ class User:
         return '', 204
 
 
-    # def save_training(self):
-    #     user_id = session['user']['_id'] # query to find the user's document)
-    #     users.update_one({'_id': user_id},  # query to find the user's document
-    #     {'$push': {'trainings_name': request.form.get('training_name')}})  # update operation
-    #     users.update_one({'_id': user_id},
-    #     {'$push': {'trainings': { 'training_url': request.form.get('training_url'), 'training_name': request.form.get('training_name'), 'training_description': request.form.get('training_description')}}})
-    #     return '', 204
-
-    # def del_training(self):
-    #     user_id = session['user']['_id']
-    #     users.update_one({'_id': user_id},  # query to find the user's document
-    #     {'$pull': {'trainings_name': request.form.get('training_name')}})  # update operation
-    #     users.update_one({'_id': user_id},
-    #     {'$pull': {'trainings': { 'training_url': request.form.get('training_url'), 'training_name': request.form.get('training_name'), 'training_description': request.form.get('training_description')}}})
-    #     return '', 204
-
-    # def profile_image(self):
-    #     # fs = gridfs.GridFS(db)
-    #     user_id = session['user']['_id']
-    #     # file = request.form.get('profile_image')
-    #     # file = fs.get_last_version(filename="file")
-    #     # contents = file.read()
-
+    
     #     # convert the image data to a Base64 string
     #     # base64_string = base64.b64encode(contents).decode('utf-8')
     #     users.update_one({'_id': user_id},
     #     {'$set': {'profile_image': request.form.get('profile_image')}})
     #     return '', 204
     
-    # def update_parameters(self):
-    #     user_id = session['user']['_id']
-    #     users.update_one({'_id': user_id},
-    #     {'$set': {'gender': request.form.get('gender'), 'weight': request.form.get('weight'), 'height': request.form.get('height')}})
-    #     return '', 204
     def update(self):
         user_id = session['user']['_id']
+
+        new_weight = request.form.get('weight')
+        new_height = request.form.get('height')
+        # Update the user's profile with the new weight and height
+        users.update_one({'_id': user_id}, {'$set': {'weight': new_weight, 'height': new_height}})
+        # Add a new entry to the historical data
+        users.update_one({'_id': user_id}, {'$push':{'info_statistic': {'weight': new_weight, 'height': new_height, 'timestamp': datetime.datetime.now().strftime("%d.%m.%Y")}}})
+
         users.update_one({'_id': user_id},
         {'$set':  {'weight': request.form.get('weight'), 'height': request.form.get('height')}})
+        return redirect(url_for('my_profile'))
+    
+    def clear_saved(self):
+        user_id = session['user']['_id']
+        users.update_one({'_id': user_id},
+        {'$set': {'trainings_name': [], 'trainings': []}})
         return redirect(url_for('my_profile'))

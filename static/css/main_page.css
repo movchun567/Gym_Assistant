@@ -21,6 +21,7 @@
   flex-direction: column;
   overflow: hidden;
   padding: 20px;
+  z-index: 10000;
 }
 .toast{
   width: 300px;
@@ -31,6 +32,7 @@
   margin: 15px 0;
   align-items: center;
   display: flex;
+  z-index: 10000;
 }
 .toast span{
   margin: 0 20px;
@@ -60,15 +62,31 @@
   margin: 50px;
 }
 .grid__item_exerc {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   padding: 50px;
   place-items: center;
   background-color: #fff;
   border-radius: .4rem;
   overflow: hidden;
-  box-shadow: 0 3rem 3rem rgba(0, 0, 0, .1);
+  box-shadow: 0 3rem 6rem rgba(0, 0, 0, .1);
   cursor: pointer;
   transition: var(--transition);
-  margin: 50px;
+  align-items: stretch;
+  align-items: space-around;
+}
+.grid__item_video {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 50px;
+  cursor: pointer;
+  box-shadow: 0 3rem 6rem rgba(0, 0, 0, .1);
+  /* align-items: stretch;
+  align-items: space-around; */
+  margin-inline: 10%;
 }
   
 .head{ 
@@ -78,6 +96,8 @@
 }
 a:link { 
   text-decoration: none;
+  color: black;
+  font-family: Montserrat;
 } 
 a:visited { 
   text-decoration: none;
@@ -107,16 +127,22 @@ a:hover {
   background-repeat: no-repeat;
 }
 */
-.video::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  width: 3px;
-  background-color: rgb(100, 105, 127);
-  border-radius: 0 5px 5px 0;
-} 
+.description {
+  width: 560px;
+  padding: 25px;
+}
+
+.description p {
+  margin-top: 0;
+}
+.video {
+  position: relative;
+  border-right: none;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 a.underline-hover-effect {
   text-decoration: none;
   color: inherit;
@@ -172,6 +198,8 @@ a.underline-hover-effect {
 
 h2 {
   order: 2;
+  display: flex;
+  justify-content: center;
 }
 
 p {
@@ -467,6 +495,21 @@ a:active {
   line-height: 75px;
   font-size: 30px;
 }
+
+.grid__item_header {
+  place-items: center;
+  background-color: #fff;
+  border-radius: 0.4rem;
+  overflow: hidden;
+  box-shadow: 0 3rem 6rem rgba(0, 0, 0, .1);
+  cursor: pointer;
+  transition: 0.5s;
+  height: 500px;
+  margin: 65px;
+  padding: 30px;
+}
+
+
 .grid__item {
   place-items: center;
   background-color: #fff;
@@ -477,7 +520,7 @@ a:active {
   transition: 0.5s;
   height: 500px;
 }
-.grid__item:hover {
+.grid__item_header:hover {
   transform: translateY(-3px);
   box-shadow: 0 4rem 8rem rgba(0, 0, 0, .2);
 }

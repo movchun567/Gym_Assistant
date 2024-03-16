@@ -6,6 +6,12 @@
         <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
         <link href="/static/css/my_profile.css" rel="stylesheet" />
         <link rel="icon" type="image/png" href="/static/images/weights.png">
+        <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script> -->
+
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js" integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
       rel="stylesheet">
       <style>
@@ -51,9 +57,61 @@
                 <p class = 'characteristics'>Зріст:  {{ user_data['height']}} см</p>
                 <p class = 'characteristics'>Стать: {{ user_data['gender']}}</p>
                 <div style="display: flex; justify-content: space-between;">
-                <a href="{{ url_for('update_parameters')}}" class="button" style="font-family: Montserrat;">Змінити параметри</a>
+                    <a href="{{ url_for('update_parameters')}}" class="button" style="font-family: Montserrat;">Змінити параметри</a>
             </div>
+            <br>
+            <br>
+            <p class = 'characteristics'><strong>Відслідковуй свій прогрес</strong></p>
+            <div style="height: 80vh; display: flex;justify-content: space-around;margin-inline: 10%;">
+                <canvas id="myChart"></canvas>
+            </div>
+         
+            <script>
+                const labels = {{ labels | tojson }};
+         
+                const data = {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Heigth',
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: {{ heights_data | tojson }},
+                        lineTension: 0.2,
+                    },
+                    {
+                        label: 'Weight',
+                        backgroundColor: 'rgb(75, 192, 192)',
+                        borderColor: 'rgb(75, 192, 192)',
+                        data: {{ weights_data | tojson }},
+                        lineTension: 0.2
+                    }]
+                };
+         
+                const config = {
+                    type: 'line',
+                    data: data,
+                    options: {
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    color: 'rgb(255, 99, 132)'  // Color for the first y-axis
+                                }
+                            }
+                        }
+                    }
+                };
+         
+                const myChart = new Chart(
+                    document.getElementById('myChart'),
+                    config
+                );
+         
+            </script>
             
+            
+
             <!-- <img src="data:image/jpeg;base64,{{ image_data }}"> -->
             <div class='profile'>
                 <!-- <div class="profile-pic" style="display: flex;">
@@ -72,7 +130,41 @@
             {%block your_trainings%}
             {%endblock your_trainings%}
             {%endif%}
-            <a href="/user/signout" class="button" style="font-family: Montserrat;">Вийти з профілю</a>
+            <div class="out_or_delete">
+                <a href="/user/clear_saved" class="button" style="font-family: Montserrat;">Очистити збережені</a>
+                <a href="/user/signout" class="button" style="font-family: Montserrat;">Вийти з профілю</a>
+            </div>
         </div>
     </body> 
 </html>
+
+<!-- [
+    { time: '2014', weight: 50, height: 90},
+    { time: '2015', weight: 65,  height: 75},
+    { time: '2016', weight: 50,  height: 50},
+    { time: '2017', weight: 75,  height: 60},
+    { time: '2018', weight: 80,  height: 65},
+    { time: '2019', weight: 90,  height: 70},
+    { time: '2024', weight: 160, height: 95}
+    ],
+{
+                        label: 'Weight',
+                        backgroundColor: 'rgb(75, 192, 192)',
+                        borderColor: 'rgb(75, 192, 192)',
+                        data: {{ weights_data | tojson }},
+                        yAxisID: 'y-axis-2',
+                        lineTension: 0.2
+                    } 
+                
+ yAxisID: 'y-axis-2', 
+,
+                            'y-axis-2': {
+                                position: 'right',
+                                beginAtZero: true,
+                                ticks: {
+                                    color: 'rgb(75, 192, 192)'  // Color for the first y-axis
+                                }
+                            }-->
+
+
+    

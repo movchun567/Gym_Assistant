@@ -25,13 +25,28 @@ def main_page():
 
 @app.route('/my_profile/')
 def my_profile():
-
     user_id = session['user']['_id']
     user_trainings = users_info.find_one({'_id': user_id})['trainings']
     names_of_saved = users_info.find_one({'_id': user_id})['trainings_name']
     user_data =  users_info.find_one({'_id': user_id})
 
-    return render_template('my_profile_extention.html', user_trainings=user_trainings, names_of_saved=names_of_saved, user_data=user_data)
+    labels = []
+    weights_data = []
+    heights_data = []
+    for info in user_data['info_statistic']:
+        labels.append(info['timestamp'])
+        weights_data.append(info['weight'])
+        heights_data.append(info['height'])
+    #     weights_data.append(int(info['weight']))
+    #     heights_data.append(int(info['height']))
+
+    # all_info = []
+
+    # info_charts = user_data['info_statistic']
+    # for obj in info_charts:
+    #     all_info.append({'date': obj['timestamp'], 'weight': obj['weight'], 'height': obj['height']})
+
+    return render_template('my_profile_extention.html', user_trainings=user_trainings, names_of_saved=names_of_saved, user_data=user_data,labels=labels, weights_data=weights_data, heights_data=heights_data)
 
 @app.route('/update_parameters')
 def update_parameters():
