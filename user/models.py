@@ -27,7 +27,7 @@ class User:
             "height" : request.form.get('height'),
             "trainings_name": [],
             "trainings":[],
-            "info_statistic": []
+            "info_statistic": [{request.form.get('weight'), request.form.get('height'), datetime.datetime.now().strftime("%d.%m.%Y")}]
         }
         user['password'] = pbkdf2_sha256.encrypt(user['password'])
         if db['users'].find_one({"email" : user['email']}):
