@@ -53,7 +53,11 @@
                         </div>
                     </div>
                 </a>
+                {% if session['logged_in'] == True %}
+                <a href="{{ url_for('my_profile')}}">
+                {%else%}
                 <a href="{{ url_for('login_form')}}">
+                {%endif%}
                     <div class="grid__item_header">
                         <img class="card__img" src="/static/images/person.png">
                         <div class="card__content">

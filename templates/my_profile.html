@@ -6,9 +6,6 @@
         <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
         <link href="/static/css/my_profile.css" rel="stylesheet" />
         <link rel="icon" type="image/png" href="/static/images/weights.png">
-        <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script> -->
-
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js" integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -55,7 +52,6 @@
                 <p class = 'characteristics'>Імʼя користувача: {{user_data['name']}} </p>
                 <p class = 'characteristics'>Вага:  {{ user_data['weight']}} кг</p>
                 <p class = 'characteristics'>Зріст:  {{ user_data['height']}} см</p>
-                <p class = 'characteristics'>Стать: {{ user_data['gender']}}</p>
                 <div style="display: flex; justify-content: space-between;">
                     <a href="{{ url_for('update_parameters')}}" class="button" style="font-family: Montserrat;">Змінити параметри</a>
             </div>
@@ -94,10 +90,7 @@
                         maintainAspectRatio: false,
                         scales: {
                             y: {
-                                beginAtZero: true,
-                                ticks: {
-                                    color: 'rgb(255, 99, 132)'  // Color for the first y-axis
-                                }
+                                beginAtZero: true
                             }
                         }
                     }
