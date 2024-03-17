@@ -20,7 +20,7 @@
                 to_change.style.color ='black';
             }
             }
-      </script>
+        </script>
     </head>
     <body>
         <div class="icon_container">
@@ -1190,6 +1190,8 @@
 
         {%endif%}
         {%endif%}
+        <label for="search" class="search__label" style="display: block; text-align: center; margin-bottom: 20px; font-family: Montserrat; font-size: 36px;">Знайти вправу</label>
+        <input type="search" id="search" name="search" placeholder="Шукати за назвою...">
         {% for training in trainings %}
         <!-- <div class="grid__item_exerc"> -->
             <div class="grid">
@@ -1250,5 +1252,6 @@
             </div>
         <!-- </div> -->
         {% endfor %}
+        <script src="/static/js/search.js"></script>
     </body> 
 </html>
