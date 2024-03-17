@@ -3,11 +3,9 @@
 {% block your_trainings %}
     <div class="saved_trainings" id ="training">
     <span class="v633_61"><h2>Збережені тренування</h2></span>
-    <hr>
     <br>
     <div class='cantainer-3'>
     <div class="saved_trainings">
-    <label for="search" class="search__label" style="display: block; text-align: center; margin-bottom: 20px; font-family: Montserrat; font-size: 36px;">Знайти у збережених</label>
     <input type="search" id="search" name="search" placeholder="Шукати за назвою...">
     {% for training_obj in user_trainings%}
     <div class="grid">
