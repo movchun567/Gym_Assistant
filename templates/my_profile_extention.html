@@ -13,7 +13,7 @@
                 <iframe width="560" height="315" src="{{ training_obj['training_url'] }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
             <div class="description">
-                <h2>{{ training_obj['training_name'] }}
+                <h2><strong>{{ training_obj['training_name'] }}</strong>
                     <form action="{{ url_for('save_training') }}" method="post">
                         <button onclick="Toggle(this)" class='mark'>
                             <span class="material-icons-outlined"  style="color:black;">
