@@ -41,7 +41,11 @@
             <span class="v633_61"><h2>Створи своє індивідуальне тренування</h2></span>
             <span class="v633_60"><p style="text-align: center; margin-inline: 200px">Обирай вправи для своєї програми тренувань на кожен вид мʼяз. Зручна інтерактивна мапа мʼязової системи допоможе легко зорієнтуватися.</p></span>
             <div class="flex-container">
+                {% if session['logged_in'] == True %}
                 <a href="{{ url_for('my_training')}}">
+                {%else%}
+                <a href="{{ url_for('login_form')}}">
+                {%endif%}
                     <div class="grid__item_header">
                         <img class="card__img" src="/static/images/weights.png">
                         <div class="card__content">
@@ -71,7 +75,11 @@
                         </div>
                     </div>
                 </a>
+                {% if session['logged_in'] == True %}
                 <a href="#map">
+                {%else%}
+                <a href="{{ url_for('login_form')}}">
+                {%endif%}
                     <div class="grid__item_header">
                         <img class="card__img" src="/static/images/map.png">
                         <div class="card__content">

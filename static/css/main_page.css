@@ -543,6 +543,7 @@ a:active {
   line-height: 1.7;
   height: 100px;
   width: 300px;
+  margin-inline: auto;
   color: darken(var(--color-text), 1%);
   text-align: center;
 }
