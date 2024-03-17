@@ -142,5 +142,12 @@ def inner_thigh():
     trainings = all_exercises.find()
     return render_template('exercises_extention.html', trainings=trainings, muscle = "Внутрішні м'язи ніг", user_saved=user_saved)
 
+@app.route('/mewing')
+def mewing():
+    user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
+    trainings = all_exercises.find()
+    return render_template('exercises_extention.html', trainings=trainings, muscle = "Обличчя", user_saved=user_saved)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
