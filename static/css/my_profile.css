@@ -503,3 +503,20 @@ a.underline-hover-effect {
 .out_or_delete{
   display: flex;
 }
+
+input[type="search"]{
+  border-radius: 30px;
+  border: solid 1px;
+  border-color: rgba(170,58,58,1);
+  font-size: 20px;
+  background: rgb(239, 239, 239);
+  width: 80vw;
+  max-width: 600px;
+  color: rgba(170,58,58,1);
+  font-family: sans-serif;
+  height: 48px;
+  padding: 15px;
+  display: block;
+  margin: auto;
+
+}
