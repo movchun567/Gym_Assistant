@@ -5,7 +5,7 @@ document.getElementById('search').addEventListener('input', function() {
     cards.forEach(function(card) {
         const trainingName = card.querySelector('input[name="training_name"]').value.toLowerCase();
         if (trainingName.includes(searchValue)) {
-            card.style.display = 'block';
+            card.style.display = 'flex';
         } else {
             card.style.display = 'none';
         }
