@@ -2,8 +2,6 @@ from flask import Flask, jsonify, request, render_template, session, redirect, u
 import uuid
 from passlib.hash import pbkdf2_sha256
 from app import db
-import gridfs
-import base64
 import datetime
 
 users = db['users']
