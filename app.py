@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, url_for, session
 from pymongo import MongoClient
 import certifi
+import os
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 app.secret_key = 'somesthing'
@@ -150,4 +151,4 @@ def mewing():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=5000, host='0.0.0.0')
