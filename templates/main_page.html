@@ -21,6 +21,17 @@
             }
             }
         </script>
+        <style>
+            .mark{
+            background: transparent;
+            border: none;
+            }
+            .material-icons-outlined {
+            color: gray;
+            font-size: 45px;
+    
+            }
+        </style>
     </head>
     <body>
         <div class="icon_container">
@@ -28,7 +39,7 @@
         </div>
         <div class="head">
             <a href="{{ url_for('main_page') }}"><img src="/static/images/icon_smaller.png" width='70px' ></a>
-            <div class="sections" id="slogan">|     Обери, що тренуємо сьогодні</div>
+            <div class="sections" id="slogan"><a class="underline-hover-effect" href="{{ url_for('all_trainings') }}">Усі вправи</a></div>
             <div class="sections" id="my_training"><a class="underline-hover-effect" href="{{ url_for('main_page') }}">Головна</a></div>
             {% if session['logged_in'] == True %}
             <div class="sections" id="profile_section"><a class="underline-hover-effect" href="{{ url_for('my_profile') }}">Мій профіль</a></div>
@@ -1201,6 +1212,8 @@
         <br>
         <label for="search" class="search__label" style="display: block; text-align: center; margin: 20px; font-family: Montserrat; font-size: 36px;">Знайти вправу</label>
         <input type="search" id="search" name="search" placeholder="Шукати за назвою...">
+        <div id="all_trainings">
+        </div>
         {% for training in trainings %}
         <!-- <div class="grid__item_exerc"> -->
             <div class="grid">

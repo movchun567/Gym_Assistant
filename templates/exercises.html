@@ -36,7 +36,7 @@
     </div>
     <div class="head">
         <img src="/static/images/icon_smaller.png" width='70px'>
-        <div class="sections" id="slogan">|     Обери, що тренуємо сьогодні</div>
+        <div class="sections" id="slogan"><a class="underline-hover-effect" href="{{ url_for('all_trainings') }}">Усі вправи</a></div>
         <div class="sections" id="my_training"><a class="underline-hover-effect" href="{{ url_for('main_page') }}">Головна</a></div>
         <div class="sections" id="profile_section"><a class="underline-hover-effect" href="{{ url_for('my_profile') }}">Мій профіль</a></div>
         <div class="sections" id="main_section"><a class="underline-hover-effect" href="{{ url_for('my_training') }}">Моє тренування</a></div>

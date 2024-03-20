@@ -363,8 +363,13 @@ a.underline-hover-effect {
   font-weight: 500;
   color: var(--color-header);
   margin-bottom: 1.5rem;
-}
 
+}
+.material-icons-outlined {
+  color: gray;
+  font-size: 45px;
+
+}
 .card__text {
   font-size: 1.5rem;
   font-size: 1rem;

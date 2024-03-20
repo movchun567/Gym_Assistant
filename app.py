@@ -57,6 +57,11 @@ def update_parameters():
 def my_training():
     return redirect(url_for('my_profile')+'#training')
 
+@app.route('/all_trainings')
+def all_trainings():
+    return redirect(url_for('all_exerscises_page.html'))
+
+
 @app.route('/registration_form/')
 def registration_form():
     return render_template('registration_form.html')
