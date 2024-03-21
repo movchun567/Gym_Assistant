@@ -69,13 +69,7 @@
          
                 const data = {
                     labels: labels,
-                    datasets: [{
-                        label: 'Зріст',
-                        backgroundColor: 'rgb(255, 99, 132)',
-                        borderColor: 'rgb(255, 99, 132)',
-                        data: {{ heights_data | tojson }},
-                        lineTension: 0.2,
-                    },
+                    datasets: [
                     {
                         label: 'Вага',
                         backgroundColor: 'rgb(75, 192, 192)',
@@ -115,7 +109,14 @@
                         <img id="output" width="200" src="/static/images/Default_pfp.svg.png"/></span>
                     </label>
                     <input type="hidden" id="profile-pic" name="profile-pic" value='' style="display: none;"/>
-                </div>-->
+                </div>
+            {
+                        label: 'Зріст',
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: {{ heights_data | tojson }},
+                        lineTension: 0.2,
+                    },-->
             </div>
             <br>
             
