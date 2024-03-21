@@ -682,4 +682,5 @@ h2 {
   order: 2;
   display: flex;
   justify-content: center;
+  align-items: center;
 }

@@ -12,12 +12,12 @@
         <script>
             function Toggle(button){
             var to_change = button.querySelector('span');
-            if (to_change.style.color == 'black'){
+            if (to_change.style.color == 'maroon'){
                 to_change.style.color ='grey';
 
             }
             else{
-                to_change.style.color ='black';
+                to_change.style.color ='maroon';
             }
             }
         </script>
@@ -34,69 +34,81 @@
         </style>
     </head>
     <body>
-        <label for="search" class="search__label" style="display: block; text-align: center; margin: 20px; font-family: Montserrat; font-size: 36px;">Знайти вправу</label>
-        <input type="search" id="search" name="search" placeholder="Шукати за назвою...">
-        <div id="all_trainings">
+        <div class="icon_container">
+            <div class="icon_container" id="icon"></div>
         </div>
-        {% for training in trainings %}
-        <!-- <div class="grid__item_exerc"> -->
-            <div class="grid">
-                <div class="grid__item_video">
-                    <div class="video">
-                        <iframe width="560" height="315" src="{{ training.video_url }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                    <div class="description">
-                        <h2><strong>{{ training.name }}</strong>
-                            <form action="{{ url_for('save_training') }}" method="post">
-                                {%if 'user' not in session%}
-                                <button width="30%" onclick="showToast(message)" class='mark'>
-                                    <span class="material-icons-outlined">
-                                        bookmark
-                                    </span>
-                                </button>
-                                <div id="toastBox">
-                                </div>
-                                <script>
-                                let toastBox = document.getElementById("toastBox");
-                                let message = '<span class="material-symbols-outlined">priority_high</span> <div style="font-size: 15px;">Спочатку увійдіть у свій акаунт</div>';
-                            
-                                function showToast(message) {
-                                let toast = document.createElement("div");
-                                toast.classList.add("toast");
-                                toast.innerHTML = message;
-                                toastBox.appendChild(toast);
-                                document.getElementById("toastBox").appendChild(toast);
-                                setTimeout(function() {
-                                    toast.remove();
-                                }, 3000);
-                                }
-                                </script>
-                                {%elif training.name not in user_saved%}
-                                <button width="30%" onclick="Toggle(this)" class='mark'>
-                                    <span class="material-icons-outlined">
-                                        bookmark
-                                    </span>
-                                </button>
-                                {% else %}
-                                <button onclick="Toggle(this)" class='mark'>
-                                    <span class="material-icons-outlined" style="color:black;">
-                                        bookmark
-                                    </span>
-                                </button>
-                                {% endif %}
-                                <input type="hidden" name="training_id" value="{{ training._id }}">
-                                <input type="hidden" name="training_url" value="{{ training.video_url }}">
-                                <input type="hidden" name="training_name" value="{{ training.name }}">
-                                <input type="hidden" name="training_description" value="{{ training.description}}">
-                            </form>
-                        </h2>
-                        <p>{{ training.description }}</p>
-                    </div>
-                    
-                    
-                </div>
+        <div class="head">
+            <a href="{{ url_for('main_page') }}"><img src="/static/images/icon_smaller.png" width='70px' ></a>
+            <div class="sections" id="slogan"><a class="underline-hover-effect" href="{{ url_for('all_trainings') }}">Усі вправи</a></div>
+            <div class="sections" id="my_training"><a class="underline-hover-effect" href="{{ url_for('main_page') }}">Головна</a></div>
+            <div class="sections" id="profile_section"><a class="underline-hover-effect" href="{{ url_for('my_profile') }}">Мій профіль</a></div>
+            <div class="sections" id="main_section"><a class="underline-hover-effect" href="{{ url_for('my_training') }}">Моє тренування</a></div>
+        </div> 
+        <div class="gray_bcground">
+            <label for="search" class="search__label" style="display: block; text-align: center; margin: 20px; font-family: Montserrat; font-size: 36px;">Знайти вправу</label>
+            <input type="search" id="search" name="search" placeholder="Шукати за назвою...">
+            <div id="all_trainings">
             </div>
-        <!-- </div> -->
-        {% endfor %}
+            {% for training in trainings %}
+            <!-- <div class="grid__item_exerc"> -->
+                <div class="grid">
+                    <div class="grid__item_video">
+                        <div class="video">
+                            <iframe width="560" height="315" src="{{ training.video_url }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                        <div class="description">
+                            <h2><strong>{{ training.name }}</strong>
+                                <form action="{{ url_for('save_training') }}" method="post">
+                                    {%if 'user' not in session%}
+                                    <button width="30%" onclick="showToast(message)" class='mark'>
+                                        <span class="material-icons-outlined">
+                                            bookmark
+                                        </span>
+                                    </button>
+                                    <div id="toastBox">
+                                    </div>
+                                    <script>
+                                    let toastBox = document.getElementById("toastBox");
+                                    let message = '<span class="material-symbols-outlined">priority_high</span> <div style="font-size: 15px;">Спочатку увійдіть у свій акаунт</div>';
+                                
+                                    function showToast(message) {
+                                    let toast = document.createElement("div");
+                                    toast.classList.add("toast");
+                                    toast.innerHTML = message;
+                                    toastBox.appendChild(toast);
+                                    document.getElementById("toastBox").appendChild(toast);
+                                    setTimeout(function() {
+                                        toast.remove();
+                                    }, 3000);
+                                    }
+                                    </script>
+                                    {%elif training.name not in user_saved%}
+                                    <button width="30%" onclick="Toggle(this)" class='mark'>
+                                        <span class="material-icons-outlined">
+                                            bookmark
+                                        </span>
+                                    </button>
+                                    {% else %}
+                                    <button onclick="Toggle(this)" class='mark'>
+                                        <span class="material-icons-outlined" style="color:maroon;">
+                                            bookmark
+                                        </span>
+                                    </button>
+                                    {% endif %}
+                                    <input type="hidden" name="training_id" value="{{ training._id }}">
+                                    <input type="hidden" name="training_url" value="{{ training.video_url }}">
+                                    <input type="hidden" name="training_name" value="{{ training.name }}">
+                                    <input type="hidden" name="training_description" value="{{ training.description}}">
+                                </form>
+                            </h2>
+                            <p>{{ training.description }}</p>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+            <!-- </div> -->
+            {% endfor %}
+        </div>
     </body>
 </html>

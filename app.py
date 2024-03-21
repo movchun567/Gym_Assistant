@@ -59,7 +59,8 @@ def my_training():
 
 @app.route('/all_trainings')
 def all_trainings():
-    return redirect(url_for('all_exerscises_page.html'))
+    trainings = all_exercises.find()
+    return render_template('all_exerscises_page.html', trainings=trainings)
 
 
 @app.route('/registration_form/')

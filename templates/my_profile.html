@@ -25,12 +25,12 @@
         <script>
             function Toggle(button){
             var to_change = button.querySelector('span');
-            if (to_change.style.color == 'black'){
+            if (to_change.style.color == 'maroon'){
                 to_change.style.color ='grey';
 
             }
             else{
-                to_change.style.color ='black';
+                to_change.style.color ='maroon';
             }
             }
       </script>
@@ -40,7 +40,7 @@
             <div class="icon_container" id="icon"></div>
         </div>
         <div class="head">
-            <img src="/static/images/icon_smaller.png" width='70px'>
+            <a href="{{ url_for('main_page') }}"><img src="/static/images/icon_smaller.png" width='70px' ></a>
             <div class="sections" id="slogan"><a class="underline-hover-effect" href="{{ url_for('all_trainings') }}">Усі вправи</a></div>
             <div class="sections" id="my_training"><a class="underline-hover-effect" href="{{ url_for('main_page') }}">Головна</a></div>
             <div class="sections" id="profile_section"><a class="underline-hover-effect" href="{{ url_for('my_profile') }}">Мій профіль</a></div>

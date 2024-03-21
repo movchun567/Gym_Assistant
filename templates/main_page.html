@@ -9,7 +9,7 @@
         rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
-        <script>
+        <!-- <script>
             function Toggle(button){
             var to_change = button.querySelector('span');
             if (to_change.style.color == 'black'){
@@ -31,7 +31,7 @@
             font-size: 45px;
     
             }
-        </style>
+        </style> -->
     </head>
     <body>
         <div class="icon_container">
@@ -685,6 +685,7 @@
         {%endif%}
         {%if session['user']['gender']=='male'%}
         <!-- MAN !!!!!-->
+            <span class="v633_61"><h2>Обери ділянку для тренування</h2></span>
             <div>
                 <svg viewBox="0 0 1122.5197 793.70081">    
                     <g id="full_body_back" class="body">
@@ -1209,13 +1210,13 @@
 
         {%endif%}
         {%endif%}
-        <br>
+        <!-- <br>
         <label for="search" class="search__label" style="display: block; text-align: center; margin: 20px; font-family: Montserrat; font-size: 36px;">Знайти вправу</label>
         <input type="search" id="search" name="search" placeholder="Шукати за назвою...">
         <div id="all_trainings">
         </div>
         {% for training in trainings %}
-        <!-- <div class="grid__item_exerc"> -->
+
             <div class="grid">
                 <div class="grid__item_video">
                     <div class="video">
@@ -1272,8 +1273,7 @@
                     
                 </div>
             </div>
-        <!-- </div> -->
         {% endfor %}
-        <script src="/static/js/search.js"></script>
+        <script src="/static/js/search.js"></script> -->
     </body> 
 </html>
