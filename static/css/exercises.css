@@ -396,7 +396,6 @@ a.underline-hover-effect {
   transition: var(--transition);
   display: flex;
   align-items: stretch;
-  align-items: space-around;
 }
 
 .video {
