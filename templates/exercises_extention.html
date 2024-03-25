@@ -15,7 +15,7 @@
                     <h2>{{ training.name }}
                         {%if training.name not in user_saved%}
                         <form action="{{ url_for('save_training') }}" method="post">
-                            <button onclick="Toggle(this)" class='mark'>
+                            <button width="30%" onclick="Toggle(this)" class='mark'>
                                 <span class="material-icons-outlined">
                                     bookmark
                                 </span>
@@ -27,7 +27,7 @@
                         </form>
                         {% else %}
                         <form action="{{ url_for('save_training') }}" method="post">
-                            <button onclick="Toggle(this)" class='mark'>
+                            <button width="30%" onclick="Toggle(this)" class='mark'>
                                 <span class="material-icons-outlined" style="color:maroon;">
                                     bookmark
                                 </span>

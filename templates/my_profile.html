@@ -54,8 +54,9 @@
                 <p class = 'characteristics'>Імʼя користувача: {{user_data['name']}} </p>
                 <p class = 'characteristics'>Вага:  {{ user_data['weight']}} кг</p>
                 <p class = 'characteristics'>Зріст:  {{ user_data['height']}} см</p>
+                <p class = 'characteristics' id="bmiResult">BMI: </p>
                 <div style="display: flex; justify-content: space-between;">
-                    <a href="{{ url_for('update_parameters')}}" class="button" style="font-family: Montserrat;">Змінити параметри</a>
+                <a href="{{ url_for('update_parameters')}}" class="button" style="font-family: Montserrat;">Змінити параметри</a>
             </div>
             <br>
             <br>
@@ -96,9 +97,30 @@
                     document.getElementById('myChart'),
                     config
                 );
-         
             </script>
-            
+            <script>
+            function calculateBMI() {
+            var weight = parseFloat("{{ user_data['weight'] }}"); // Get weight from user data
+            var height = parseFloat("{{ user_data['height'] }}"); // Get height from user data
+            height = height / 100; // Convert height to meters
+            var bmi = weight / (height * height); // Calculate BMI
+            var bmiStatus;
+            if (bmi < 18.5) {
+                bmiStatus = "Низька маса тіла";
+            } else if (bmi >= 18.5 && bmi < 25) {
+                bmiStatus = "Нормальна маса тіла";
+            } else if (bmi >= 25 && bmi < 30) {
+                bmiStatus = "Надлишкова маса тіла";
+            } else {
+                bmiStatus = "Попереду багато роботи!";
+            }
+
+            // Display the BMI result
+            var bmiResultElement = document.getElementById("bmiResult");
+            bmiResultElement.textContent = "BMI: " + bmi.toFixed(1) + " (" + bmiStatus + ")";
+        }
+            window.onload = calculateBMI;
+            </script>
             
 
             <!-- <img src="data:image/jpeg;base64,{{ image_data }}"> -->
@@ -132,6 +154,7 @@
             </div>
         </div>
         <script src="/static/js/search.js"></script>
+        <script src="/static/js/bmi.js"></script>
     </body> 
 </html>
 

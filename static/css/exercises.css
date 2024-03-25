@@ -1,15 +1,13 @@
 * {
   box-sizing: border-box;
 }
-body {
-  font-size: 14px;
-}
 .mark{
 background: transparent;
 border: none;
 }
 .material-icons-outlined {
 color: gray;
+font-size: 45px;
 }
 
 .head{ 
