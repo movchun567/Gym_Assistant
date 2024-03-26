@@ -1247,12 +1247,13 @@
                                         }, 3000);
                                     }
                                 </script>
-                                {%elif training.name not in user_saved%}
-                                <button width="30%" onclick="Toggle(this)" class='mark'>
-                                    <span class="material-icons-outlined">
-                                        bookmark
-                                    </span>
-                                </button>
+                                    {%if training.name not in user_saved%}
+                                    <button width="30%" onclick="Toggle(this)" class='mark'>
+                                        <span class="material-icons-outlined">
+                                            bookmark
+                                        </span>
+                                    </button>
+                                    {%endif%}
                                 {% else %}
                                 <button onclick="Toggle(this)" class='mark'>
                                     <span class="material-icons-outlined" style="color:black;">
