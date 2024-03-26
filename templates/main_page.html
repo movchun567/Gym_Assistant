@@ -40,28 +40,7 @@
         <div class="head">
             <a href="{{ url_for('main_page') }}"><img src="/static/images/icon_smaller.png" width='70px' ></a>
             <div class="sections" id="slogan"><a class="underline-hover-effect" href="{{ url_for('all_trainings') }}">Усі вправи</a></div>
-            <!-- <div class="sections">
-                <ul class="list">
-                    <li class="list-item">
-                        start dropdown 
-                        <span class="drop">
-                            Home
-                        </span>
-                        <ul class="droplist">
-                            <li>
-                                <a href="#">My home</a>
-                            </li>
-                            <li>
-                                <a href="#">Parent home</a>
-                            </li>
-                            <li>
-                                <a href="#">Children home</a>
-                            </li>
-                        </ul>
-                        end dropdown 
-                    </li>
-                </ul>
-            </div> -->
+            
             <div class="sections" id="my_training"><a class="underline-hover-effect" href="{{ url_for('main_page') }}">Головна</a></div>
             {% if session['logged_in'] == True %}
             <div class="sections" id="profile_section"><a class="underline-hover-effect" href="{{ url_for('my_profile') }}">Мій профіль</a></div>
