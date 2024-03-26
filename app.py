@@ -22,7 +22,7 @@ def main_page():
         trainings = all_exercises.find()
         return render_template('main_page.html', trainings=trainings, user_saved=user_saved)
     trainings = all_exercises.find()
-    return render_template('main_page.html', trainings=trainings)
+    return render_template('main_page.html', trainings=trainings, user_saved=None)
 
 @app.route('/my_profile/')
 def my_profile():
