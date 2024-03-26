@@ -1216,7 +1216,6 @@
         <div id="all_trainings">
         </div>
         {% for training in trainings %}
-
             <div class="grid">
                 <div class="grid__item_video">
                     <div class="video">
@@ -1225,8 +1224,7 @@
                     <div class="description">
                         <h2><strong>{{ training.name }}</strong>
                             <form action="{{ url_for('save_training') }}" method="post">
-                                <!-- {%if 'user' not in session%} -->
-                                {%if session['logged_in']%}
+                                {% if session['logged_in'] %}
                                 <button width="30%" onclick="showToast(message)" class='mark'>
                                     <span class="material-icons-outlined">
                                         bookmark
@@ -1235,19 +1233,19 @@
                                 <div id="toastBox">
                                 </div>
                                 <script>
-                                let toastBox = document.getElementById("toastBox");
-                                let message = '<span class="material-symbols-outlined">priority_high</span> <div style="font-size: 15px;">Спочатку увійдіть у свій акаунт</div>';
-                            
-                                function showToast(message) {
-                                let toast = document.createElement("div");
-                                toast.classList.add("toast");
-                                toast.innerHTML = message;
-                                toastBox.appendChild(toast);
-                                document.getElementById("toastBox").appendChild(toast);
-                                setTimeout(function() {
-                                    toast.remove();
-                                }, 3000);
-                                }
+                                    let toastBox = document.getElementById("toastBox");
+                                    let message = '<span class="material-symbols-outlined">priority_high</span> <div style="font-size: 15px;">Спочатку увійдіть у свій акаунт</div>';
+                                    
+                                    function showToast(message) {
+                                        let toast = document.createElement("div");
+                                        toast.classList.add("toast");
+                                        toast.innerHTML = message;
+                                        toastBox.appendChild(toast);
+                                        document.getElementById("toastBox").appendChild(toast);
+                                        setTimeout(function() {
+                                            toast.remove();
+                                        }, 3000);
+                                    }
                                 </script>
                                 {%elif training.name not in user_saved%}
                                 <button width="30%" onclick="Toggle(this)" class='mark'>
@@ -1270,11 +1268,10 @@
                         </h2>
                         <p>{{ training.description }}</p>
                     </div>
-                    
-                    
                 </div>
             </div>
-        {% endfor %}
-        <script src="/static/js/search.js"></script>
-    </body> 
-</html>
+            {% endfor %}
+            <script src="/static/js/search.js"></script>
+        </body> 
+    </html>
+    <!-- {%if 'user' not in session%} -->
