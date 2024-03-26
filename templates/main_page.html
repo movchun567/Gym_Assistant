@@ -8,6 +8,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
         rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
     </head>
     <body>
         <div class="icon_container">
@@ -1203,7 +1204,7 @@
                             <form action="{{ url_for('save_training') }}" method="post">
                                 {%if session['logged_in'] is False%}
                                 <button width="30%" onclick="showToast(message)" class='mark'>
-                                    <span class="material-icons-outlined" style="font-size: 45px;">
+                                    <span class="material-icons-outlined">
                                         bookmark
                                     </span>
                                 </button>
