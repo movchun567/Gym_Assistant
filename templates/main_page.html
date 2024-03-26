@@ -1226,7 +1226,7 @@
                     <div class="description">
                         <h2><strong>{{ training.name }}</strong>
                             <form action="{{ url_for('save_training') }}" method="post">
-                                {%if user_saved is None%}
+                                {%if user_saved == False%}
                                 <button width="30%" onclick="showToast(message)" class='mark'>
                                     <span class="material-icons-outlined">
                                         bookmark
