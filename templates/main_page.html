@@ -1255,17 +1255,22 @@
                                         bookmark
                                     </span>
                                 </button>
+                                <input type="hidden" name="training_id" value="{{ training._id }}">
+                                <input type="hidden" name="training_url" value="{{ training.video_url }}">
+                                <input type="hidden" name="training_name" value="{{ training.name }}">
+                                <input type="hidden" name="training_description" value="{{ training.description}}">
                                 {% else %}
                                 <button onclick="Toggle(this)" class='mark'>
                                     <span class="material-icons-outlined" style="color:black;">
                                         bookmark
                                     </span>
                                 </button>
-                                {% endif %}
                                 <input type="hidden" name="training_id" value="{{ training._id }}">
                                 <input type="hidden" name="training_url" value="{{ training.video_url }}">
                                 <input type="hidden" name="training_name" value="{{ training.name }}">
                                 <input type="hidden" name="training_description" value="{{ training.description}}">
+                                {% endif %}
+
                             </form>
                         </h2>
                         <p>{{ training.description }}</p>
