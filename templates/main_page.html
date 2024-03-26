@@ -1248,28 +1248,26 @@
                                                 }, 3000);
                                         }
                                     </script>
-                                {%else%}
-                                    {%if training.name not in user_saved%}
-                                        <button width="30%" onclick="Toggle(this)" class='mark'>
-                                            <span class="material-icons-outlined">
-                                                bookmark
-                                            </span>
-                                        </button>
-                                        <input type="hidden" name="training_id" value="{{ training._id }}">
-                                        <input type="hidden" name="training_url" value="{{ training.video_url }}">
-                                        <input type="hidden" name="training_name" value="{{ training.name }}">
-                                        <input type="hidden" name="training_description" value="{{ training.description}}">
-                                    {% else %}
-                                        <button onclick="Toggle(this)" class='mark'>
-                                            <span class="material-icons-outlined" style="color:black;">
-                                                bookmark
-                                            </span>
-                                        </button>
-                                        <input type="hidden" name="training_id" value="{{ training._id }}">
-                                        <input type="hidden" name="training_url" value="{{ training.video_url }}">
-                                        <input type="hidden" name="training_name" value="{{ training.name }}">
-                                        <input type="hidden" name="training_description" value="{{ training.description}}">
-                                    {% endif %}
+                                {%elif training.name not in user_saved%}
+                                    <button width="30%" onclick="Toggle(this)" class='mark'>
+                                        <span class="material-icons-outlined">
+                                            bookmark
+                                        </span>
+                                    </button>
+                                    <input type="hidden" name="training_id" value="{{ training._id }}">
+                                    <input type="hidden" name="training_url" value="{{ training.video_url }}">
+                                    <input type="hidden" name="training_name" value="{{ training.name }}">
+                                    <input type="hidden" name="training_description" value="{{ training.description}}">
+                                {% else %}
+                                    <button onclick="Toggle(this)" class='mark'>
+                                        <span class="material-icons-outlined" style="color:black;">
+                                            bookmark
+                                        </span>
+                                    </button>
+                                    <input type="hidden" name="training_id" value="{{ training._id }}">
+                                    <input type="hidden" name="training_url" value="{{ training.video_url }}">
+                                    <input type="hidden" name="training_name" value="{{ training.name }}">
+                                    <input type="hidden" name="training_description" value="{{ training.description}}">
                                 {% endif %}
 
                             </form>
