@@ -52,10 +52,9 @@
             <input type="search" id="search" name="search" placeholder="Шукати за назвою...">
             <div id="all_trainings">
         </div>
-
-        <div id="cardContainer">
             {% for training in trainings %}
-                <div class="grid {% if loop.index > 10 %}hidden{% endif %}">
+            <!-- <div class="grid__item_exerc"> -->
+                <div class="grid">
                     <div class="grid__item_video">
                         <div class="video">
                             <iframe width="560" height="315" src="{{ training.video_url }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -63,29 +62,30 @@
                         <div class="description">
                             <h2><strong>{{ training.name }}</strong>
                                 <form action="{{ url_for('save_training') }}" method="post">
-                                    {% if 'user' not in session %}
+                                    {%if 'user' not in session%}
                                     <button width="30%" onclick="showToast(message)" class='mark'>
                                         <span class="material-icons-outlined">
                                             bookmark
                                         </span>
                                     </button>
-                                    <div id="toastBox"></div>
+                                    <div id="toastBox">
+                                    </div>
                                     <script>
-                                        let toastBox = document.getElementById("toastBox");
-                                        let message = '<span class="material-symbols-outlined">priority_high</span> <div style="font-size: 15px;">Спочатку увійдіть у свій акаунт</div>';
-        
-                                        function showToast(message) {
-                                            let toast = document.createElement("div");
-                                            toast.classList.add("toast");
-                                            toast.innerHTML = message;
-                                            toastBox.appendChild(toast);
-                                            document.getElementById("toastBox").appendChild(toast);
-                                            setTimeout(function() {
-                                                toast.remove();
-                                            }, 3000);
-                                        }
+                                    let toastBox = document.getElementById("toastBox");
+                                    let message = '<span class="material-symbols-outlined">priority_high</span> <div style="font-size: 15px;">Спочатку увійдіть у свій акаунт</div>';
+                                
+                                    function showToast(message) {
+                                    let toast = document.createElement("div");
+                                    toast.classList.add("toast");
+                                    toast.innerHTML = message;
+                                    toastBox.appendChild(toast);
+                                    document.getElementById("toastBox").appendChild(toast);
+                                    setTimeout(function() {
+                                        toast.remove();
+                                    }, 3000);
+                                    }
                                     </script>
-                                    {% elif training.name not in user_saved %}
+                                    {%elif training.name not in user_saved%}
                                     <button width="30%" onclick="Toggle(this)" class='mark'>
                                         <span class="material-icons-outlined">
                                             bookmark
@@ -109,29 +109,7 @@
                     </div>
                 </div>
             <!-- </div> -->
-        {% endfor %}
-        </div>
-        <button id="toggleButton" class="button" onclick="toggleCards()">Показати більше</button>
-        <script>
-            var button_pressed = false;
-        
-            function toggleCards() {
-                var cards = document.querySelectorAll('#cardContainer .grid.hidden');
-                cards.forEach(function(card) {
-                    card.classList.remove('hidden');
-                });
-        
-                // Hide the button if all cards are shown
-                var toggleButton = document.getElementById('toggleButton');
-                if (!document.querySelector('#cardContainer .grid.hidden')) {
-                    toggleButton.style.display = 'none';
-                }
-        
-                // Update button_pressed flag
-                button_pressed = true;
-            }
-        </script>
-
+            {% endfor %}
         </div>
         <script src="/static/js/search.js"></script>
     </body>
