@@ -8,30 +8,6 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
         rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-
-        <!-- <script>
-            function Toggle(button){
-            var to_change = button.querySelector('span');
-            if (to_change.style.color == 'black'){
-                to_change.style.color ='grey';
-
-            }
-            else{
-                to_change.style.color ='black';
-            }
-            }
-        </script>
-        <style>
-            .mark{
-            background: transparent;
-            border: none;
-            }
-            .material-icons-outlined {
-            color: gray;
-            font-size: 45px;
-    
-            }
-        </style> -->
     </head>
     <body>
         <div class="icon_container">
@@ -1227,7 +1203,7 @@
                             <form action="{{ url_for('save_training') }}" method="post">
                                 {%if session['logged_in'] is False%}
                                 <button width="30%" onclick="showToast(message)" class='mark'>
-                                    <span class="material-icons-outlined">
+                                    <span class="material-icons-outlined" style="font-size: 45px;">
                                         bookmark
                                     </span>
                                 </button>
