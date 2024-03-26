@@ -7,7 +7,7 @@ import datetime
 users = db['users']
 
 class User:
-    # session['logged_in'] = False
+    session['logged_in'] = False
     def start_session(self, user):
         session['logged_in'] = True
         session['user'] = user
