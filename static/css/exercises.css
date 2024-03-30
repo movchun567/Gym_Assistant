@@ -10,11 +10,116 @@ color: gray;
 font-size: 45px;
 }
 
+
+#toastBox{
+  font-family: Montserrat;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 20px;
+  z-index: 10000;
+}
+.toast{
+  width: 300px;
+  height: 50px;
+  background: rgb(255, 255, 255);
+  border-radius: 15px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); /* Add a shadow */
+  margin: 15px 0;
+  align-items: center;
+  display: flex;
+  z-index: 10000;
+}
+.toast span{
+  margin: 0 20px;
+  color:rgb(231, 96, 96);
+}
+
 .head{ 
   display: flex;
   justify-content: space-around; 
   align-items: center;  
 }
+
+.dropbtn {
+  text-decoration: none;
+  font-family: Montserrat;
+  background-color: transparent;
+  /* border: transparent; */
+  /* padding: 16px; */
+  font-size: 24px;
+  border: none;
+  cursor: pointer;
+}
+
+a.dropbtn {
+  color: rgba(51,51,51,1);
+  font-family: Montserrat;
+  font-size: 24px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.dropbtn {
+  display: inline-block;
+  padding-bottom: 0.25rem; /* defines the space between text and underline */
+  position: relative;
+}
+
+.dropbtn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-image: linear-gradient(to right, #e93b3b, #f2a640);
+  transition: width 0.25s ease-out;
+}
+.dropbtn:hover::before {
+  width: 100%;
+}
+/* .dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+} */
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  font-family: Montserrat;
+
+}
+
+.dropdown-content a {
+  color: rgba(51,51,51,1);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  width: 250px;
+  font-family: Montserrat;
+
+}
+
+/* .dropdown a:hover {background-color: #ffffff;} */
+
+.show {display: block;}
+
+
+
 /* a:link { 
   text-decoration: none;
 } 
@@ -66,7 +171,6 @@ a.underline-hover-effect {
   width: 250px;
   height: 70px;
   text-align: center;
-  /* color: rgba(51,51,51,1);  */
   font-family: Montserrat;
   font-weight: Medium;
   font-size: 24px;
@@ -80,6 +184,7 @@ a.underline-hover-effect {
   align-self: left;
 }
 #main_section {
+  color: rgba(170, 58, 58, 1);
   font-family: Montserrat;
   font-weight: Medium;
 }

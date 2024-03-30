@@ -8,7 +8,27 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
         rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-
+        <script>
+            /* When the user clicks on the button, 
+            toggle between hiding and showing the dropdown content */
+            function myFunction() {
+              document.getElementById("myDropdown").classList.toggle("show");
+            }
+            
+            // Close the dropdown if the user clicks outside of it
+            window.onclick = function(event) {
+              if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                  var openDropdown = dropdowns[i];
+                  if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                  }
+                }
+              }
+            }
+        </script>
         <!-- <script>
             function Toggle(button){
             var to_change = button.querySelector('span');
@@ -39,7 +59,24 @@
         </div>
         <div class="head">
             <a href="{{ url_for('main_page') }}"><img src="/static/images/icon_smaller.png" width='70px' ></a>
-            <div class="sections" id="slogan"><a class="underline-hover-effect" href="{{ url_for('all_trainings') }}">Усі вправи</a></div>
+            <div class="dropdown">
+                <a onclick="myFunction()" class="dropbtn" style="color:#333333;">Усі вправи</a>
+                <div id="myDropdown" class="dropdown-content">
+                  <a href="{{url_for('trapezium')}}">Трапеція</a>
+                  <a href="{{url_for('triceps')}}">Тріцепс</a>
+                  <a href="{{url_for('biceps')}}">Біцепс</a>
+                  <a href="{{url_for('chest')}}">Грудні мʼязи</a>
+                  <a href="{{url_for('shoulders')}}">Плечі і дельтовидні мʼязи</a>
+                  <a href="{{url_for('forearms')}}">Передпліччя</a>
+                  <a href="{{url_for('back_upper')}}">Верхня частина спини</a>
+                  <a href="{{url_for('back_middle')}}">Середня частина спини</a>
+                  <a href="{{url_for('back_lower')}}">Тазобедренний суглоб</a>
+                  <a href="{{url_for('abs')}}">М'язи пресу</a>
+                  <a href="{{url_for('quads')}}">М'язи тазу і квадріцепсу</a>
+                  <a href="{{url_for('inner_thigh')}}">Внутрішні м'язи ніг</a>
+                  <a href="{{url_for('calves')}}">М'язи литок</a>
+                </div>
+            </div>
             
             <div class="sections" id="my_training"><a class="underline-hover-effect" href="{{ url_for('main_page') }}">Головна</a></div>
             {% if session['logged_in'] == True %}
@@ -1211,7 +1248,7 @@
 
         {%endif%}
         {%endif%}
-        <br>
+        <!-- <br>
         <label for="search" class="search__label" style="display: block; text-align: center; margin: 20px; font-family: Montserrat; font-size: 36px;">Знайти вправу</label>
         <input type="search" id="search" name="search" placeholder="Шукати за назвою...">
         <div id="all_trainings">
@@ -1278,6 +1315,6 @@
                 </div>
             </div>
         {% endfor %}
-        <script src="/static/js/search.js"></script>
+        <script src="/static/js/search.js"></script> -->
     </body> 
 </html>

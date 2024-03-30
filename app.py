@@ -74,86 +74,114 @@ def login_form():
 @app.route('/triceps')
 def triceps():
     trainings = all_exercises.find()
-    user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
-    return render_template('exercises_extention.html', trainings=trainings, muscle = "М'язи тріцепса", user_saved=user_saved)
+    if 'user' in session:
+        user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
+        return render_template('exercises_extention.html', trainings=trainings, muscle = "М'язи тріцепса", user_saved=user_saved)
+    return render_template('exercises_extention.html', trainings=trainings, muscle = "М'язи тріцепса", user_saved=False)
 
 @app.route('/biceps')
 def biceps():
     trainings = all_exercises.find()
-    user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
-    return render_template('exercises_extention.html', trainings=trainings, muscle = "М'язи біцепса", user_saved=user_saved)
+    if 'user' in session:
+        user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
+        return render_template('exercises_extention.html', trainings=trainings, muscle = "М'язи біцепса", user_saved=user_saved)
+    return render_template('exercises_extention.html', trainings=trainings, muscle = "М'язи біцепса", user_saved=False)
 
 @app.route('/chest')
 def chest():
-    user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
     trainings = all_exercises.find()
-    return render_template('exercises_extention.html', trainings=trainings, muscle = "Грудні м'язи", user_saved=user_saved)
+    if 'user' in session:
+        user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
+        return render_template('exercises_extention.html', trainings=trainings, muscle = "Грудні м'язи", user_saved=user_saved)
+    return render_template('exercises_extention.html', trainings=trainings, muscle = "Грудні м'язи", user_saved=False)
 
 @app.route('/shoulders')
 def shoulders():
-    user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
     trainings = all_exercises.find()
-    return render_template('exercises_extention.html', trainings=trainings, muscle = "Плечі і дельтовидні м'язи", user_saved=user_saved)
+    if 'user' in session:
+        user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
+        return render_template('exercises_extention.html', trainings=trainings, muscle = "Плечі і дельтовидні м'язи", user_saved=user_saved)
+    return render_template('exercises_extention.html', trainings=trainings, muscle = "Плечі і дельтовидні м'язи", user_saved=False)
 
 @app.route('/back_upper')
 def back_upper():
-    user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
     trainings = all_exercises.find()
-    return render_template('exercises_extention.html', trainings=trainings, muscle = "Верхня частина спини і широкий м'яз спини", user_saved=user_saved)
+    if 'user' in session:
+        user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
+        return render_template('exercises_extention.html', trainings=trainings, muscle = "Верхня частина спини і широкий м'яз спини", user_saved=user_saved)
+    return render_template('exercises_extention.html', trainings=trainings, muscle = "Верхня частина спини і широкий м'яз спини", user_saved=False)
 
 @app.route('/back_middle')
 def back_middle():
-    user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
     trainings = all_exercises.find()
-    return render_template('exercises_extention.html', trainings=trainings, muscle = "Середина спини і поясничний відділ", user_saved=user_saved)
+    if 'user' in session:
+        user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
+        return render_template('exercises_extention.html', trainings=trainings, muscle = "Середина спини і поясничний відділ", user_saved=user_saved)
+    return render_template('exercises_extention.html', trainings=trainings, muscle = "Середина спини і поясничний відділ", user_saved=False)
 
 @app.route('/abs')
 def abs():
-    user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
     trainings = all_exercises.find()
-    return render_template('exercises_extention.html', trainings=trainings, muscle = "М'язи пресу", user_saved=user_saved)
+    if 'user' in session:
+        user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
+        return render_template('exercises_extention.html', trainings=trainings, muscle = "Прес", user_saved=user_saved)
+    return render_template('exercises_extention.html', trainings=trainings, muscle = "Прес", user_saved=False)
 
 @app.route('/back_lower')
 def back_lower():
-    user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
     trainings = all_exercises.find()
-    return render_template('exercises_extention.html', trainings=trainings, muscle = "Тазобедренний суглоб", user_saved=user_saved)
+    if 'user' in session:
+        user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
+        return render_template('exercises_extention.html', trainings=trainings, muscle = "Нижня частина спини", user_saved=user_saved)
+    return render_template('exercises_extention.html', trainings=trainings, muscle = "Нижня частина спини", user_saved=False)
 
 @app.route('/quads')
 def quads():
-    user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
     trainings = all_exercises.find()
-    return render_template('exercises_extention.html', trainings=trainings, muscle = "М'язи тазу і квадріцепсу", user_saved=user_saved)
+    if 'user' in session:
+        user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
+        return render_template('exercises_extention.html', trainings=trainings, muscle = "М'язи стегон", user_saved=user_saved)
+    return render_template('exercises_extention.html', trainings=trainings, muscle = "М'язи стегон", user_saved=False)
 
 @app.route('/calves')
 def calves():
-    user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
     trainings = all_exercises.find()
-    return render_template('exercises_extention.html', trainings=trainings, muscle = "М'язи литок", user_saved=user_saved)
+    if 'user' in session:
+        user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
+        return render_template('exercises_extention.html', trainings=trainings, muscle = "М'язи литок", user_saved=user_saved)
+    return render_template('exercises_extention.html', trainings=trainings, muscle = "М'язи литок", user_saved=False)
 
 @app.route('/forearms')
 def forearms():
-    user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
     trainings = all_exercises.find()
-    return render_template('exercises_extention.html', trainings=trainings, muscle = "Передпліччя", user_saved=user_saved)
+    if 'user' in session:
+        user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
+        return render_template('exercises_extention.html', trainings=trainings, muscle = "Передпліччя", user_saved=user_saved)
+    return render_template('exercises_extention.html', trainings=trainings, muscle = "Передпліччя", user_saved=False)
 
 @app.route('/trapezium')
 def trapezium():
-    user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
     trainings = all_exercises.find()
-    return render_template('exercises_extention.html', trainings=trainings, muscle = "Трапеція", user_saved=user_saved)
+    if 'user' in session:
+        user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
+        return render_template('exercises_extention.html', trainings=trainings, muscle = "Трапеція", user_saved=user_saved)
+    return render_template('exercises_extention.html', trainings=trainings, muscle = "Трапеція", user_saved=False)
 
 @app.route('/inner_thigh')
 def inner_thigh():
-    user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
     trainings = all_exercises.find()
-    return render_template('exercises_extention.html', trainings=trainings, muscle = "Внутрішні м'язи ніг", user_saved=user_saved)
+    if 'user' in session:
+        user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
+        return render_template('exercises_extention.html', trainings=trainings, muscle = "Внутрішні м'язи ніг", user_saved=user_saved)
+    return render_template('exercises_extention.html', trainings=trainings, muscle = "Внутрішні м'язи ніг", user_saved=False)
 
 @app.route('/mewing')
 def mewing():
-    user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
     trainings = all_exercises.find()
-    return render_template('exercises_extention.html', trainings=trainings, muscle = "Обличчя", user_saved=user_saved)
+    if 'user' in session:
+        user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
+        return render_template('exercises_extention.html', trainings=trainings, muscle = "М'язи обличчя", user_saved=user_saved)
+    return render_template('exercises_extention.html', trainings=trainings, muscle = "М'язи обличчя", user_saved=False)
 
 
 if __name__ == '__main__':
