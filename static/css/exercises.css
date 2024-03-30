@@ -83,9 +83,8 @@ a.dropbtn {
 .dropbtn:hover::before {
   width: 100%;
 }
-/* .dropbtn:hover, .dropbtn:focus {
-  background-color: #2980B9;
-} */
+.dropdown a:hover {background-color: #ffffff;}
+
 
 .dropdown {
   position: relative;

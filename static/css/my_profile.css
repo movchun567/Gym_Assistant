@@ -85,7 +85,7 @@ a.dropbtn {
   width: 250px;
 }
 
-/* .dropdown a:hover {background-color: #ffffff;} */
+.dropdown li:hover {background-color: #ffffff;}
 
 .show {display: block;}
 
