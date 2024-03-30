@@ -569,6 +569,7 @@ a.underline-hover-effect {
   justify-content: center;
   align-content: space-between;
   margin-inline: 10%;
+  align-self: center;
 }
 
 .video {
@@ -576,6 +577,7 @@ a.underline-hover-effect {
   position: relative;
   border-right: none;
   padding-right: 20px;
+  align-self: center;
 }
 
 

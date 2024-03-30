@@ -90,8 +90,8 @@
                 <img id="output">
                 <script src="/static/js/profile_photo.js"></script>
                 <p class = 'characteristics'>Імʼя користувача: {{user_data['name']}} </p>
-                <p class = 'characteristics'>Вага:  {{ user_data['weight']}} кг</p>
                 <p class = 'characteristics'>Зріст:  {{ user_data['height']}} см</p>
+                <p class = 'characteristics'>Вага:  {{ user_data['weight']}} кг</p>
                 <p class = 'characteristics' id="bmiResult">BMI: </p>
                 <div style="display: flex; justify-content: space-between;">
                 <a href="{{ url_for('update_parameters')}}" class="button" style="font-family: Montserrat;">Змінити параметри</a>

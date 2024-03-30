@@ -124,8 +124,8 @@ def abs():
     trainings = all_exercises.find()
     if 'user' in session:
         user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
-        return render_template('exercises_extention.html', trainings=trainings, muscle = "Прес", user_saved=user_saved)
-    return render_template('exercises_extention.html', trainings=trainings, muscle = "Прес", user_saved=False)
+        return render_template('exercises_extention.html', trainings=trainings, muscle = "М'язи пресус", user_saved=user_saved)
+    return render_template('exercises_extention.html', trainings=trainings, muscle = "М'язи пресус", user_saved=False)
 
 @app.route('/back_lower')
 def back_lower():
@@ -140,8 +140,8 @@ def quads():
     trainings = all_exercises.find()
     if 'user' in session:
         user_saved = users_info.find_one({'_id': session['user']['_id']})['trainings_name']
-        return render_template('exercises_extention.html', trainings=trainings, muscle = "М'язи стегон", user_saved=user_saved)
-    return render_template('exercises_extention.html', trainings=trainings, muscle = "М'язи стегон", user_saved=False)
+        return render_template('exercises_extention.html', trainings=trainings, muscle = "М'язи тазу і квадріцепсу", user_saved=user_saved)
+    return render_template('exercises_extention.html', trainings=trainings, muscle = "М'язи тазу і квадріцепсу", user_saved=False)
 
 @app.route('/calves')
 def calves():
