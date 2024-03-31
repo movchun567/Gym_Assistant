@@ -136,6 +136,7 @@
                     config
                 );
             </script>
+            <div id="scale_bmi"></div>
             <script>
             function calculateBMI() {
             var weight = parseFloat("{{ user_data['weight'] }}"); // Get weight from user data
@@ -156,30 +157,21 @@
             // Display the BMI result
             var bmiResultElement = document.getElementById("bmiResult");
             bmiResultElement.textContent = "BMI: " + bmi.toFixed(1) + " (" + bmiStatus + ")";
-        }
+            }
             window.onload = calculateBMI;
+              /* construct manually */
+              var bar1 = new ldBar("#scale_bmi");
+              /* ldBar stored in the element */
+              var bar2 = document.getElementById('scale_bmi').ldBar;
+              bar1.set(bmi);
             </script>
-            
 
             <!-- <img src="data:image/jpeg;base64,{{ image_data }}"> -->
+            
             <div class='profile'>
-                <!-- <div class="profile-pic" style="display: flex;">
-                    <label class="-label" for="file">
-                        <span class="glyphicon glyphicon-camera"></span>
-                        <img id="output" width="200" src="/static/images/Default_pfp.svg.png"/></span>
-                    </label>
-                    <input type="hidden" id="profile-pic" name="profile-pic" value='' style="display: none;"/>
-                </div>
-            {
-                        label: 'Зріст',
-                        backgroundColor: 'rgb(255, 99, 132)',
-                        borderColor: 'rgb(255, 99, 132)',
-                        data: {{ heights_data | tojson }},
-                        lineTension: 0.2,
-                    },-->
             </div>
             <br>
-            
+    
             </div>
             <br><br>
             {% if user_trainings %}
@@ -201,34 +193,4 @@
         <script src="/static/js/bmi.js"></script>
     </body> 
 </html>
-
-<!-- [
-    { time: '2014', weight: 50, height: 90},
-    { time: '2015', weight: 65,  height: 75},
-    { time: '2016', weight: 50,  height: 50},
-    { time: '2017', weight: 75,  height: 60},
-    { time: '2018', weight: 80,  height: 65},
-    { time: '2019', weight: 90,  height: 70},
-    { time: '2024', weight: 160, height: 95}
-    ],
-{
-                        label: 'Weight',
-                        backgroundColor: 'rgb(75, 192, 192)',
-                        borderColor: 'rgb(75, 192, 192)',
-                        data: {{ weights_data | tojson }},
-                        yAxisID: 'y-axis-2',
-                        lineTension: 0.2
-                    } 
-                
- yAxisID: 'y-axis-2', 
-,
-                            'y-axis-2': {
-                                position: 'right',
-                                beginAtZero: true,
-                                ticks: {
-                                    color: 'rgb(75, 192, 192)'  // Color for the first y-axis
-                                }
-                            }-->
-
-
     
