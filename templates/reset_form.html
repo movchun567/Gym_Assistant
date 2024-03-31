@@ -7,34 +7,29 @@
         <link href="/static/css/registration_form.css" rel="stylesheet" />
     </head>
     <body>
-      <div class="icon_container">
-        <a href="{{ url_for('main_page') }}"><div class="icon_container" id="icon"></div></a>
+        <div class="icon_container">
+            <div class="icon_container" id="icon"></div>
         </div>
         <div>
-            <span class="v633_61"><h2>Реєстрація</h2> </span>
+            <span class="v633_61"><h2>Скинути пароль</h2></span>
+            <div class="instruction">На пошту вам прийшов код автентифікації. Будь ласка, уведіть його у відповідне поле. Якщо ви не отримали паролю, тоді, можливо, ви вказали неіснуючу пошту.</div>
             <div class="Form" style="text-align: center;">
                 <div class="tab-content">
                   <div id="Insertion">
                   </div>
                   <!-- Form Fields Here -->
-                    <form class="Insert_Form" name="registration_form" method="POST" action="/user/signup" onsubmit="return validatePasswords()">
-                      <input type="text" name="name"required placeholder="Імʼя" required>
-                      <input type="email" id="username" name="email" required placeholder="Пошта" required>
+                    <form class="Insert_Form" name="reset_form" method="POST" action="/user/reset_password">
+                      <div class="error-message" id="codeError" style="font-size: 20px; color: rgba(170,58,58,1); font-weight: bold;"></div>
+                      <input type="password" id="temp_code" name="temp_code"required placeholder="Тимчасовий код" required> 
                       <div class="error-message" id="passwordError" style="font-size: 20px; color: rgba(170,58,58,1); font-weight: bold;"></div>
                       <input type="password" id="password_1" name="password_1"required placeholder="Пароль" minlength="6" maxlength="20" required> 
                       <input type="password" id="password_2" name="password_2"required placeholder="Пароль знову" minlength="6" maxlength="20" required>
-                      <div class="genderbox">
-                        <label for="male" class="radio" style="margin: 0px;">Стать</label>
-                        <label for="male"><input type="radio" id="male" name="gender" value="male" required>Чоловік</label>
-                        <label for="female"><input type="radio" id="female" name="gender" value="female" required>Жінка</label>
-                      </div>
-                      <input type="number" id="height" name="height"required placeholder="Ваш зріст(см)" required min="1" max="350">
-                      <input type="number" id="weight" name="weight"required placeholder="Ваша вага" required min="1" max="250">
                       {% if error_message %}
                       <p style="color: red; font-family: Montserrat; font-size: medium; font-weight: bold;">{{ error_message }}</p>
                       {% endif %}
-                      <input type="submit" name="submit" value="Зареєструватися" class="button" />
-                    </form>
+                        
+                      <input type="submit" name="submit" value="Змінити пароль" class="button" />
+                    </form> 
                     <script>
 
                       function validatePasswords() {
@@ -59,8 +54,10 @@
                       }
                   </script>
                 </div>
-                <h3 style="font-family: Montserrat; text-align: center;">Вже маєш профіль?</h3>
+                
+                <h3 style="font-family: Montserrat; text-align: center;">Повернутися до входу?</h3>
                 <a href="{{ url_for('login_form') }} " style="font-family: Montserrat; font-size: medium; color: red;"><u>Увійти</u></a>
+                
               </div>
           </div>
     </body> 

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+        <link href="/static/css/registration_form.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="icon_container">
+            <div class="icon_container" id="icon"></div>
+        </div>
+        <div>
+            <span class="v633_61"><h2>Відновлення паролю</h2></span>
+            <div class="Form" style="text-align: center;">
+                <div class="tab-content">
+                  <div id="Insertion">
+                  </div>
+                  <!-- Form Fields Here -->
+                  <h3 style="font-family: Montserrat; text-align: center;"></h3>
+                  <form class="Insert_Form" name="forgot_form" method="POST" action="/user/forgot_password" >
+                    <input type="email" name="email" required placeholder="Пошта">
+                    {% if error_message %}
+                    <p style="color: red; font-family: Montserrat; font-size: medium; font-weight: bold;">{{ error_message }}</p>
+                    {% endif %}
+                    <input type="submit" name="submit" value="Скинути пароль" class="button" />
+                  </form>
+
+                </div>
+                
+                <h3 style="font-family: Montserrat; text-align: center;">Повернутися до входу?</h3>
+                <a href="{{ url_for('login_form') }} " style="font-family: Montserrat; font-size: medium; color: red;"><u>Увійти</u></a>
+                
+              </div>
+          </div>
+    </body> 
+</html>

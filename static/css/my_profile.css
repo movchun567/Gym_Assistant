@@ -29,6 +29,7 @@ a.dropbtn {
 }
 
 .dropbtn {
+  text-align: center;
   display: inline-block;
   padding-bottom: 0.25rem; /* defines the space between text and underline */
   position: relative;
@@ -600,3 +601,11 @@ input[type="search"]{
   margin: auto;
 
 }
+/* 
+.pfp {
+  vertical-align: middle;
+  position: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+} */

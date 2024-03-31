@@ -71,6 +71,14 @@ def registration_form():
 def login_form():
     return render_template('login.html')
 
+@app.route('/forgot_form/')
+def forgot_form():
+    return render_template('forgot_form.html')
+
+@app.route('/reset_form/')
+def reset_form():
+    return render_template('reset_form.html')
+
 @app.route('/triceps')
 def triceps():
     trainings = all_exercises.find()
