@@ -14,6 +14,14 @@ def signout():
 def login():
     return User().login()
 
+@app.route('/user/forgot_password', methods=['POST'])
+def forgot_password():
+    return User().forgot_password()
+
+@app.route('/user/reset_password', methods=['POST'])
+def reset_password():
+    return User().reset_password()
+
 @app.route('/user/save_training', methods=['POST'])
 def save_training():
     return User().save_training()

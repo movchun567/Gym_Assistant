@@ -485,9 +485,17 @@ h1 {
   background-color: rgb(239, 239, 239);
   color: rgba(170,58,58,1);
 }
+.instruction{
+  font-size: 20px;
+  font-family: sans-serif;
+  color: grey;
+  margin-inline: 20%;
+  margin-bottom: 5%;
+  text-align: center;
 
+}
 .tab-content {
-    display: flex;
+    /* display: flex; */
     border-left: 3px solid;
     border-right: 3px solid;
     border-radius: 30px;

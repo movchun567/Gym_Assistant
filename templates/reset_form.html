@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+        <link href="/static/css/registration_form.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="icon_container">
+            <div class="icon_container" id="icon"></div>
+        </div>
+        <div>
+            <span class="v633_61"><h2>Скинути пароль</h2></span>
+            <div class="instruction">На пошту вам прийшов код автентифікації. Будь ласка, уведіть його у відповідне поле. Якщо ви не отримали паролю, тоді, можливо, ви вказали неіснуючу пошту.</div>
+            <div class="Form" style="text-align: center;">
+                <div class="tab-content">
+                  <div id="Insertion">
+                  </div>
+                  <!-- Form Fields Here -->
+                    <form class="Insert_Form" name="reset_form" method="POST" action="/user/reset_password">
+                      <div class="error-message" id="codeError" style="font-size: 20px; color: rgba(170,58,58,1); font-weight: bold;"></div>
+                      <input type="password" id="temp_code" name="temp_code"required placeholder="Тимчасовий код" required> 
+                      <div class="error-message" id="passwordError" style="font-size: 20px; color: rgba(170,58,58,1); font-weight: bold;"></div>
+                      <input type="password" id="password_1" name="password_1"required placeholder="Пароль" minlength="6" maxlength="20" required> 
+                      <input type="password" id="password_2" name="password_2"required placeholder="Пароль знову" minlength="6" maxlength="20" required>
+                      {% if error_message %}
+                      <p style="color: red; font-family: Montserrat; font-size: medium; font-weight: bold;">{{ error_message }}</p>
+                      {% endif %}
+                        
+                      <input type="submit" name="submit" value="Змінити пароль" class="button" />
+                    </form> 
+                    <script>
+
+                      function validatePasswords() {
+                          // Get the values of the password and confirm password fields
+                          var password = document.getElementById("password_1").value;
+                          var confirmPassword = document.getElementById("password_2").value;
+              
+                          // Check if the passwords match
+                          if (password !== confirmPassword) {
+                              // Display an error message
+                              document.getElementById("passwordError").innerHTML = "- Паролі не співпадають -";
+                              
+                              // Prevent the form from being submitted
+                              return false;
+                          } else {
+                              // Clear any previous error message
+                              document.getElementById("passwordError").innerHTML = "";
+                              
+                              // Allow the form to be submitted
+                              return true;
+                          }
+                      }
+                  </script>
+                </div>
+                
+                <h3 style="font-family: Montserrat; text-align: center;">Повернутися до входу?</h3>
+                <a href="{{ url_for('login_form') }} " style="font-family: Montserrat; font-size: medium; color: red;"><u>Увійти</u></a>
+                
+              </div>
+          </div>
+    </body> 
+</html>

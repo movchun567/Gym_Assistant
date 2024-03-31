@@ -3,8 +3,10 @@ import uuid
 from passlib.hash import pbkdf2_sha256
 from app import db
 import datetime
+import smtplib
 
 users = db['users']
+server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
 
 class User:
     def start_session(self, user):
@@ -36,6 +38,40 @@ class User:
             return self.start_session(user)
 
         return jsonify({"error" : "Signup failed"}), 400
+    
+    def forgot_password(self):
+        global TMP_PWD
+        global USER 
+        TMP_PWD = str(uuid.uuid4().hex)
+        USER = db['users'].find_one({
+            "email" : request.form.get('email')
+        })
+        server.login("gymassistanthelp@gmail.com", 'cvow rpib jrzd ulkp')
+        msg = 'Subject: Temporary code to reset your password\n\n' + "Please, enter this code into the reset form: " + TMP_PWD \
+            + "\nIf you didn't request a password reset, please ignore this email. \n\nBest regards, \nGym Assistant team."
+        if USER:
+            server.sendmail("gymassistanthelp@gmail.com", USER['email'], msg)
+            return redirect('/reset_form')
+        if not USER:
+            error_message = "Такого користувача не існує"
+            return render_template('forgot_form.html', error_message=error_message)
+        
+        return jsonify({"error" : "Invalid email"}), 400
+    
+    def reset_password(self):
+        if request.form.get('temp_code') != TMP_PWD and request.form.get('password_1') != request.form.get('password_2'):
+            error_message = "Тимчасовий код та паролі не співпадають"
+            return render_template('reset_form.html', error_message=error_message)
+        elif request.form.get('temp_code') != TMP_PWD:
+            error_message = "Неправильний тимчасовий код"
+            return render_template('reset_form.html', error_message=error_message)
+        elif request.form.get('password_1') != request.form.get('password_2'):
+            error_message = "Паролі не співпадають"
+            return render_template('reset_form.html', error_message=error_message)
+        USER['password'] = pbkdf2_sha256.encrypt(request.form.get('password_1'))
+        db['users'].update_one({'_id': USER['_id']}, {'$set': {'password': USER['password']}})
+        return redirect('/login_form')
+
     
     def signout(self):
         session.clear()
