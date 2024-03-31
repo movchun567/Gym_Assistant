@@ -46,6 +46,7 @@ font-size: 45px;
 }
 
 .dropbtn {
+  text-align: center;
   text-decoration: none;
   font-family: Montserrat;
   background-color: transparent;
