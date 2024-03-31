@@ -5,8 +5,7 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
         <link href="/static/css/main_page.css" rel="stylesheet"/>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
-        rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
         <script>
@@ -41,14 +40,18 @@
             <a href="{{ url_for('main_page') }}"><img src="/static/images/icon_smaller.png" width='70px' ></a>
             <div class="sections" id="slogan"><a class="underline-hover-effect" href="{{ url_for('all_trainings') }}">Усі вправи</a></div>
             <div class="sections" id="my_training"><a class="underline-hover-effect" href="{{ url_for('main_page') }}">Головна</a></div>
+            {% if session['logged_in'] == True %}
             <div class="sections" id="profile_section"><a class="underline-hover-effect" href="{{ url_for('my_profile') }}">Мій профіль</a></div>
-            <div class="sections" id="main_section"><a class="underline-hover-effect" href="{{ url_for('my_training') }}">Моє тренування</a></div>
+            <div class="sections" id="main_section"><a class="underline-hover-effect" href="{{ url_for('my_training')}}">Моє тренування</a></div>
+            {%else%}
+            <div class="sections" id="main_section"><a class="underline-hover-effect" href="{{ url_for('login_form')}}">Увійти</a></div>
+            {%endif%}
         </div> 
         <div class="gray_bcground">
             <label for="search" class="search__label" style="display: block; text-align: center; margin: 20px; font-family: Montserrat; font-size: 36px;">Знайти вправу</label>
             <input type="search" id="search" name="search" placeholder="Шукати за назвою...">
             <div id="all_trainings">
-            </div>
+        </div>
             {% for training in trainings %}
             <!-- <div class="grid__item_exerc"> -->
                 <div class="grid">
@@ -103,12 +106,11 @@
                             </h2>
                             <p>{{ training.description }}</p>
                         </div>
-                        
-                        
                     </div>
                 </div>
             <!-- </div> -->
             {% endfor %}
         </div>
+        <script src="/static/js/search.js"></script>
     </body>
 </html>

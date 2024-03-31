@@ -8,6 +8,28 @@
     <link rel="icon" type="image/png" href="/static/images/weights.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
       rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+      <script>
+        /* When the user clicks on the button, 
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+          document.getElementById("myDropdown").classList.toggle("show");
+        }
+        
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+          if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+            }
+          }
+        }
+    </script>
       <style>
       .mark{
       background: transparent;
@@ -15,6 +37,7 @@
       }
       .material-icons-outlined {
       color: gray;
+      font-size: 45px;
       }
       </style>
       <script>
@@ -34,13 +57,34 @@
     <div class="icon_container">
       <a href="{{ url_for('main_page') }}"><div class="icon_container" id="icon"></div></a>
     </div>
-    <div class="head">
-        <img src="/static/images/icon_smaller.png" width='70px'>
-        <div class="sections" id="slogan"><a class="underline-hover-effect" href="{{ url_for('all_trainings') }}">Усі вправи</a></div>
+      <div class="head">
+        <a href="{{ url_for('main_page') }}"><img src="/static/images/icon_smaller.png" width='70px' ></a>
+        <div class="dropdown">
+          <a onclick="myFunction()" class="dropbtn">Усі вправи</a>
+          <div id="myDropdown" class="dropdown-content">
+            <a href="{{url_for('trapezium')}}">Трапеція</a>
+            <a href="{{url_for('triceps')}}">Тріцепс</a>
+            <a href="{{url_for('biceps')}}">Біцепс</a>
+            <a href="{{url_for('chest')}}">Грудні мʼязи</a>
+            <a href="{{url_for('shoulders')}}">Плечі і дельтовидні мʼязи</a>
+            <a href="{{url_for('forearms')}}">Передпліччя</a>
+            <a href="{{url_for('back_upper')}}">Верхня частина спини</a>
+            <a href="{{url_for('back_middle')}}">Середня частина спини</a>
+            <a href="{{url_for('back_lower')}}">Нижня частина спини</a>
+            <a href="{{url_for('abs')}}">М'язи пресу</a>
+            <a href="{{url_for('quads')}}">М'язи тазу і квадріцепсу</a>
+            <a href="{{url_for('inner_thigh')}}">Внутрішні м'язи ніг</a>
+            <a href="{{url_for('calves')}}">М'язи литок</a>
+          </div>
+      </div>
         <div class="sections" id="my_training"><a class="underline-hover-effect" href="{{ url_for('main_page') }}">Головна</a></div>
+        {% if session['logged_in'] == True %}
         <div class="sections" id="profile_section"><a class="underline-hover-effect" href="{{ url_for('my_profile') }}">Мій профіль</a></div>
-        <div class="sections" id="main_section"><a class="underline-hover-effect" href="{{ url_for('my_training') }}">Моє тренування</a></div>
-    </div> 
+        <div class="sections" id="main_section"><a class="underline-hover-effect" href="{{ url_for('my_training')}}">Моє тренування</a></div>
+        {%else%}
+        <div class="sections" id="main_section"><a class="underline-hover-effect" href="{{ url_for('login_form')}}">Увійти</a></div>
+        {%endif%}  
+      </div> 
     <div class='main-part'>
       {% block content %}
       {% endblock content %}
