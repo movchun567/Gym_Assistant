@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+        <link href="/static/css/my_profile.css" rel="stylesheet" />
+        <link rel="icon" type="image/png" href="/static/images/weights.png">
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet">
+      <style>
+        .mark{
+        background: transparent;
+        border: none;
+        }
+        .material-icons-outlined {
+        color: gray;
+        font-size: 45px;
+
+        }
+        </style>
+        <script>
+            function Toggle(button){
+            var to_change = button.querySelector('span');
+            if (to_change.style.color == 'maroon'){
+                to_change.style.color ='grey';
+
+            }
+            else{
+                to_change.style.color ='maroon';
+            }
+            }
+      </script>
+      <script>
+        /* When the user clicks on the button, 
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+          document.getElementById("myDropdown").classList.toggle("show");
+        }
+        
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+          if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+            }
+          }
+        }
+    </script>
+    </head>
+    <body>
+        <div class="icon_container">
+            <a href="{{ url_for('main_page') }}"><div class="icon_container" id="icon"></div></a>
+        </div>
+        <div class="head">
+            <a href="{{ url_for('main_page') }}"><img src="/static/images/icon_smaller.png" width='70px' ></a>
+            <div class="dropdown">
+                <a onclick="myFunction()" class="dropbtn">Усі вправи</a>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="{{url_for('trapezium')}}">Трапеція</a>
+                    <a href="{{url_for('triceps')}}">Тріцепс</a>
+                    <a href="{{url_for('biceps')}}">Біцепс</a>
+                    <a href="{{url_for('chest')}}">Грудні мʼязи</a>
+                    <a href="{{url_for('shoulders')}}">Плечі і дельтовидні мʼязи</a>
+                    <a href="{{url_for('forearms')}}">Передпліччя</a>
+                    <a href="{{url_for('back_upper')}}">Верхня частина спини</a>
+                    <a href="{{url_for('back_middle')}}">Середня частина спини</a>
+                    <a href="{{url_for('back_lower')}}">Нижня частина спини</a>
+                    <a href="{{url_for('abs')}}">М'язи пресу</a>
+                    <a href="{{url_for('quads')}}">М'язи тазу і квадріцепсу</a>
+                    <a href="{{url_for('inner_thigh')}}">Внутрішні м'язи ніг</a>
+                    <a href="{{url_for('calves')}}">М'язи литок</a>
+                </div>
+            </div>
+            <div class="sections" id="my_training"><a class="underline-hover-effect" href="{{ url_for('main_page') }}">Головна</a></div>
+            <div class="sections" id="profile_section"><a class="underline-hover-effect" href="{{ url_for('my_profile') }}">Мій профіль</a></div>
+            <div class="sections" id="main_section"><a class="underline-hover-effect" href="{{ url_for('my_training') }}">Моє тренування</a></div>
+        </div> 
+        <div class="gray_bcground">
+            <span class="v633_61"><h2>Мій профіль</h2></span>
+            <div class="personal_info">
+                <img id="output">
+                <script src="/static/js/profile_photo.js"></script>
+                <p class = 'characteristics'>Імʼя користувача: {{user_data['name']}} </p>
+                <p class = 'characteristics'>Зріст:  {{ user_data['height']}} см</p>
+                <p class = 'characteristics'>Вага:  {{ user_data['weight']}} кг</p>
+                <p class = 'characteristics' id="bmiResult">BMI: </p>
+                <div style="display: flex; justify-content: space-between;">
+                <a href="{{ url_for('update_parameters')}}" class="button" style="font-family: Montserrat;">Змінити параметри</a>
+            </div>
+            <br>
+            <br>
+            <p class = 'characteristics'><strong>Відслідковуй свій прогрес</strong></p>
+            <div style="height: 60vh; display: flex;justify-content: space-around;margin-inline: 10%;">
+                <canvas id="myChart"></canvas>
+            </div>
+         
+            <script>
+                const labels = {{ labels | tojson }};
+         
+                const data = {
+                    labels: labels,
+                    datasets: [
+                    {
+                        label: 'Вага',
+                        backgroundColor: 'rgb(75, 192, 192)',
+                        borderColor: 'rgb(75, 192, 192)',
+                        data: {{ weights_data | tojson }},
+                        lineTension: 0.2
+                    }]
+                };
+         
+                const config = {
+                    type: 'line',
+                    data: data,
+                    options: {
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                min: 30
+                            }
+                        }
+                    }
+                };
+         
+                const myChart = new Chart(
+                    document.getElementById('myChart'),
+                    config
+                );
+            </script>
+            <div id="scale_bmi"></div>
+            <script>
+            function calculateBMI() {
+            var weight = parseFloat("{{ user_data['weight'] }}"); // Get weight from user data
+            var height = parseFloat("{{ user_data['height'] }}"); // Get height from user data
+            height = height / 100; // Convert height to meters
+            var bmi = weight / (height * height); // Calculate BMI
+            var bmiStatus;
+            if (bmi < 18.5) {
+                bmiStatus = "Низька маса тіла";
+            } else if (bmi >= 18.5 && bmi < 25) {
+                bmiStatus = "Нормальна маса тіла";
+            } else if (bmi >= 25 && bmi < 30) {
+                bmiStatus = "Надлишкова маса тіла";
+            } else {
+                bmiStatus = "Попереду багато роботи!";
+            }
+
+            // Display the BMI result
+            var bmiResultElement = document.getElementById("bmiResult");
+            bmiResultElement.textContent = "BMI: " + bmi.toFixed(1) + " (" + bmiStatus + ")";
+            }
+            window.onload = calculateBMI;
+              /* construct manually */
+              var bar1 = new ldBar("#scale_bmi");
+              /* ldBar stored in the element */
+              var bar2 = document.getElementById('scale_bmi').ldBar;
+              bar1.set(bmi);
+            </script>
+
+            <!-- <img src="data:image/jpeg;base64,{{ image_data }}"> -->
+            
+            <div class='profile'>
+            </div>
+            <br>
+    
+            </div>
+            <br><br>
+            {% if user_trainings %}
+            {%block your_trainings%}
+            {%endblock your_trainings%}
+            {%else%}
+            <div class="saved_trainings" id ="training">
+            <span class="v633_61"><h2>Збережені тренування</h2></span>
+            <div class="personal_info"><div class = 'characteristics'>Поки що ви не зберегли жодного тренування</div></div>
+            {%endif%}
+            <div class="out_or_delete">
+                {% if user_trainings %}
+                <a href="/user/clear_saved" class="button" style="font-family: Montserrat;">Очистити збережені</a>
+                {%endif%}
+                <a href="/user/signout" class="button" style="font-family: Montserrat;">Вийти з профілю</a>
+            </div>
+        </div>
+        <script src="/static/js/search.js"></script>
+        <script src="/static/js/bmi.js"></script>
+    </body> 
+</html>
+    

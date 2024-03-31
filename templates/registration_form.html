@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+        <link href="/static/css/registration_form.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="icon_container">
+            <div class="icon_container" id="icon"></div>
+        </div>
+        <div>
+            <span class="v633_61"><h2>Реєстрація</h2> </span>
+            <div class="Form" style="text-align: center;">
+                <div class="tab-content">
+                  <div id="Insertion">
+                  </div>
+                  <!-- Form Fields Here -->
+                    <form class="Insert_Form" name="registration_form" method="POST" action="/user/signup" onsubmit="return validatePasswords()">
+                      <input type="text" name="name"required placeholder="Імʼя" required>
+                      <input type="email" id="username" name="email" required placeholder="Пошта" required>
+                      <div class="error-message" id="passwordError" style="font-size: 20px; color: rgba(170,58,58,1); font-weight: bold;"></div>
+                      <input type="password" id="password_1" name="password_1"required placeholder="Пароль" minlength="6" maxlength="20" required> 
+                      <input type="password" id="password_2" name="password_2"required placeholder="Пароль знову" minlength="6" maxlength="20" required>
+                      <div class="genderbox">
+                        <label for="male" class="radio" style="margin: 0px;">Стать</label>
+                        <label for="male"><input type="radio" id="male" name="gender" value="male" required>Чоловік</label>
+                        <label for="female"><input type="radio" id="female" name="gender" value="female" required>Жінка</label>
+                      </div>
+                      <input type="number" id="height" name="height"required placeholder="Ваш зріст(см)" required min="1" max="350">
+                      <input type="number" id="weight" name="weight"required placeholder="Ваша вага" required min="1" max="250">
+                      {% if error_message %}
+                      <p style="color: red; font-family: Montserrat; font-size: medium; font-weight: bold;">{{ error_message }}</p>
+                      {% endif %}
+                      <input type="submit" name="submit" value="Зареєструватися" class="button" />
+                    </form>
+                    <script>
+
+                      function validatePasswords() {
+                          // Get the values of the password and confirm password fields
+                          var password = document.getElementById("password_1").value;
+                          var confirmPassword = document.getElementById("password_2").value;
+              
+                          // Check if the passwords match
+                          if (password !== confirmPassword) {
+                              // Display an error message
+                              document.getElementById("passwordError").innerHTML = "- Паролі не співпадають -";
+                              
+                              // Prevent the form from being submitted
+                              return false;
+                          } else {
+                              // Clear any previous error message
+                              document.getElementById("passwordError").innerHTML = "";
+                              
+                              // Allow the form to be submitted
+                              return true;
+                          }
+                      }
+                  </script>
+                </div>
+                <h3 style="font-family: Montserrat; text-align: center;">Вже маєш профіль?</h3>
+                <a href="{{ url_for('login_form') }} " style="font-family: Montserrat; font-size: medium; color: red;"><u>Увійти</u></a>
+              </div>
+          </div>
+    </body> 
+</html>

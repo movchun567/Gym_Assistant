@@ -1,0 +1,5 @@
+pymongo==4.6.2
+Flask==3.0.2
+certifi==2023.11.17
+passlib==1.7.4
+gunicorn==21.2.0
