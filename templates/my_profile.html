@@ -65,19 +65,19 @@
             <div class="dropdown">
                 <a onclick="myFunction()" class="dropbtn">Усі вправи</a>
                 <div id="myDropdown" class="dropdown-content">
-                  <a href="{{url_for('trapezium')}}">Трапеція</a>
-                  <a href="{{url_for('triceps')}}">Тріцепс</a>
-                  <a href="{{url_for('biceps')}}">Біцепс</a>
-                  <a href="{{url_for('chest')}}">Грудні мʼязи</a>
-                  <a href="{{url_for('shoulders')}}">Плечі і дельтовидні мʼязи</a>
-                  <a href="{{url_for('forearms')}}">Передпліччя</a>
-                  <a href="{{url_for('back_upper')}}">Верхня частина спини</a>
-                  <a href="{{url_for('back_middle')}}">Середня частина спини</a>
-                  <a href="{{url_for('back_lower')}}">Тазобедренний суглоб</a>
-                  <a href="{{url_for('abs')}}">М'язи пресу</a>
-                  <a href="{{url_for('quads')}}">М'язи тазу і квадріцепсу</a>
-                  <a href="{{url_for('inner_thigh')}}">Внутрішні м'язи ніг</a>
-                  <a href="{{url_for('calves')}}">М'язи литок</a>
+                    <a href="{{url_for('trapezium')}}">Трапеція</a>
+                    <a href="{{url_for('triceps')}}">Тріцепс</a>
+                    <a href="{{url_for('biceps')}}">Біцепс</a>
+                    <a href="{{url_for('chest')}}">Грудні мʼязи</a>
+                    <a href="{{url_for('shoulders')}}">Плечі і дельтовидні мʼязи</a>
+                    <a href="{{url_for('forearms')}}">Передпліччя</a>
+                    <a href="{{url_for('back_upper')}}">Верхня частина спини</a>
+                    <a href="{{url_for('back_middle')}}">Середня частина спини</a>
+                    <a href="{{url_for('back_lower')}}">Нижня частина спини</a>
+                    <a href="{{url_for('abs')}}">М'язи пресу</a>
+                    <a href="{{url_for('quads')}}">М'язи тазу і квадріцепсу</a>
+                    <a href="{{url_for('inner_thigh')}}">Внутрішні м'язи ніг</a>
+                    <a href="{{url_for('calves')}}">М'язи литок</a>
                 </div>
             </div>
             <div class="sections" id="my_training"><a class="underline-hover-effect" href="{{ url_for('main_page') }}">Головна</a></div>
@@ -185,6 +185,10 @@
             {% if user_trainings %}
             {%block your_trainings%}
             {%endblock your_trainings%}
+            {%else%}
+            <div class="saved_trainings" id ="training">
+            <span class="v633_61"><h2>Збережені тренування</h2></span>
+            <div class="personal_info"><div class = 'characteristics'>Поки що ви не зберегли жодного тренування</div></div>
             {%endif%}
             <div class="out_or_delete">
                 {% if user_trainings %}

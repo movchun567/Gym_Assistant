@@ -16,8 +16,8 @@ body {
 .dropbtn {
   text-decoration: none;
   font-family: Montserrat;
-  background-color: transparent;
   font-size: 24px;
+  background-color: transparent;
   border: none;
   cursor: pointer;
 }
@@ -25,9 +25,7 @@ body {
 a.dropbtn {
   color: rgba(51,51,51,1);
   font-family: Montserrat;
-  font-size: 24px;
   text-decoration: none;
-  color: inherit;
 }
 
 .dropbtn {
@@ -59,6 +57,8 @@ a.dropbtn {
 }
 
 .dropdown-content {
+  font-family: Montserrat;
+  font-size: 18px;
   display: none;
   position: absolute;
   background-color: #f1f1f1;
@@ -69,6 +69,8 @@ a.dropbtn {
 }
 
 .dropdown-content a {
+  font-family: Montserrat;
+  font-size: 18px;
   color: rgba(51,51,51,1);
   padding: 12px 16px;
   text-decoration: none;
@@ -83,12 +85,10 @@ a.dropbtn {
 
 
 h2 {
+  text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-a{
-  /* color: black; */
 }
 a:link { 
   text-decoration: none;
